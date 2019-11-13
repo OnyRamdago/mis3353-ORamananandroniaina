@@ -1,8 +1,7 @@
 @{Layout = "_Layout.cshtml";}
 @{
 var db = Database.Open("my-connection"); 
-var selectQueryString = "select c.* from CLIENT c"; 
-var clientList= "select * from CLIENT";
+var selectQueryString = "select * from CLIENT"; 
 }
 
 <!-- The Modal -->
@@ -50,7 +49,7 @@ var clientList= "select * from CLIENT";
     <div class="form-group">
     <label for="pnum">Phone Number:</label>
     <input type="text" class="form-control" id="pnum" name = "pnum">
-  
+  </div>
 <button type="submit" class="btn btn-primary">Save</button>
 </form> 
       </div>
