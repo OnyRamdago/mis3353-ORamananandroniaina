@@ -1,14 +1,14 @@
 @{Layout = "_Layout.cshtml";}
 @{
 var db = Database.Open("my-connection"); 
-var selectQueryString = "select c.* from client c"; 
+var selectQueryString = "select c.* from CLIENT c"; 
 }
 <h1>Clients</h1>
 <div class="table-responsive">
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>ClientID</th>
+                <th>Client ID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Street Address</th>
