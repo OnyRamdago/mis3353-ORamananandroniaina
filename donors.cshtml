@@ -1,5 +1,8 @@
 @{Layout = "_Layout.cshtml";}
-
+@{
+var db = Database.Open("my-connection"); 
+var selectQueryString = "select dn.* from donor dn"; 
+}
 <h1>Donors</h1>
 <div class="table-responsive">
     <table class="table table-hover">
@@ -16,46 +19,19 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>D001</td>
-                <td>Xuemeng</td>
-                <td>Wang</td>
-                <td>240 Asp Ave</td>
-                <td>Norman</td>
-                <td>OK</td>
-                <td>73072</td>
-                <td>405-896-0010</td>
-            </tr>
-            <tr>
-                <td>D002</td>
-                <td>Ugosh</td>
-                <td>Ituba</td>
-                <td>240 Asp Ave</td>
-                <td>Norman</td>
-                <td>OK</td>
-                <td>73072</td>
-                <td>405-896-0012</td>
-            </tr>
-            <tr>
-                <td>D003</td>
-                <td>Ony</td>
-                <td>Ram</td>
-                <td>240 Asp Ave</td>
-                <td>Norman</td>
-                <td>OK</td>
-                <td>73072</td>
-                <td>405-896-0015</td>
-            </tr>
-            <tr>
-                <td>D004</td>
-                <td>Xue</td>
-                <td>Hu</td>
-                <td>240 Asp Ave</td>
-                <td>Norman</td>
-                <td>OK</td>
-                <td>73072</td>
-                <td>405-896-6510</td>
-            </tr>
+ @foreach(var row in db.Query(selectQueryString))
+{
+<tr> 
+<td>@row.DonorID</td> 
+<td>@row.FirstName</td> 
+<td>@row.LastName</td> 
+<td>@row.StreetAddress</td>
+<td>@row.City</td> 
+<td>@row.State</td> 
+<td>@row.ZipCode</td>
+<td>@row.CellPhone</td> 
+</tr> 
+}
         </tbody>
     </table>
 </div>
