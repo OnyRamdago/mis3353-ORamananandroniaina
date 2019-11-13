@@ -1,5 +1,8 @@
 ﻿@{Layout = "_Layout.cshtml";}
-
+@{
+var db = Database.Open("my-connection"); 
+var selectQueryString = "select a.* from animal a"; 
+}
 <h1>Employees</h1>
 <div class="table-responsive">
     <table class="table table-hover">
@@ -21,96 +24,24 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>S001</td>
-                <td>N002</td>
-                <td>Kolmycz</td>
-                <td>George</td>
-                <td>Rescue</td>
-                <td>6/15/1942</td>
-                <td>8/12/2004</td>
-                <td>(405)-325-1900</td>
-                <td>440 Lindsey Street</td>
-                <td>Norman</td>
-                <td>OK</td>
-                <td>73072</td>
-                <td>$43,000</td>
-            </tr>
-            <tr>
-                <td>S002</td>
-                <td>N001</td>
-                <td>Green</td>
-                <td>Rachel</td>
-                <td>Rescue</td>
-                <td>6/15/1965</td>
-                <td>8/12/2004</td>
-                <td>(405)-325-3256</td>
-                <td>450 Lindsey Street</td>
-                <td>Norman</td>
-                <td>OK</td>
-                <td>73072</td>
-                <td>$45,000</td>
-            </tr>
-            <tr>
-                <td>S003</td>
-                <td>N001</td>
-                <td>Buffay</td>
-                <td>Ursula</td>
-                <td>Security</td>
-                <td>6/15/1988</td>
-                <td>8/12/2010</td>
-                <td>(405)-325-0022</td>
-                <td>650 Parkinson Street</td>
-                <td>Norman</td>
-                <td>OK</td>
-                <td>73072</td>
-                <td>$39,000</td>
-            </tr>
-            <tr>
-                <td>S004</td>
-                <td>N003</td>
-                <td>Parker</td>
-                <td>Peter</td>
-                <td>Veterinary</td>
-                <td>6/15/1992</td>
-                <td>12/25/1998</td>
-                <td>(405)-325-1901</td>
-                <td>200 Lindsey Street</td>
-                <td>Norman</td>
-                <td>OK</td>
-                <td>73072</td>
-                <td>$54,700</td>
-            </tr>
-            <tr>
-                <td>S005</td>
-                <td>N003</td>
-                <td>Kolmycz</td>
-                <td>James</td>
-                <td>Reception</td>
-                <td>6/15/1942</td>
-                <td>6/12/2006</td>
-                <td>(405)-325-1900</td>
-                <td>440 Lindsey Street</td>
-                <td>Norman</td>
-                <td>OK</td>
-                <td>73072</td>
-                <td>$43,600</td>
-            </tr>
-            <tr>
-                <td>S006</td>
-                <td>N002</td>
-                <td>Potter</td>
-                <td>John</td>
-                <td>Veterinary</td>
-                <td>6/15/1962</td>
-                <td>8/12/2015</td>
-                <td>(405)-325-1920</td>
-                <td>440 Lindsey Street</td>
-                <td>Norman</td>
-                <td>OK</td>
-                <td>73072</td>
-                <td>$47,000</td>
-            </tr>
+@foreach(var row in db.Query(selectQueryString))
+{
+<tr> 
+<td>@row.EmployeeID</td> 
+<td>@row.ShelterID</td> 
+<td>@row.FirstName</td> 
+<td>@row.LastName</td>
+<td>@row.Department</td> 
+<td>@row.DOB</td> 
+<td>@row.StartDate</td> 
+<td>@row.EmployeePhone</td> 
+<td>@row.EmployeeState</td>
+<td>@row.ZipCode</td>
+<td>@row.Salary</td>
+
+</tr> 
+}
+            
         </tbody>
     </table>
 </div>
