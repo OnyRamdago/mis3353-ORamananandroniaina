@@ -1,7 +1,7 @@
 ﻿@{Layout = "_Layout.cshtml";}
 @{
-var db = Database.Open("SmallBakery"); 
-var selectQueryString = "SELECT * FROM Product ORDER BY Name"; 
+var db = Database.Open("my-connection"); 
+var selectQueryString = "select * from Animal"; 
 }
 <h1>Animals</h1>
 <div class="table-responsive">
@@ -14,61 +14,26 @@ var selectQueryString = "SELECT * FROM Product ORDER BY Name";
                 <th>Animal Type</th>
                 <th>Gender</th>
                 <th>Date of Birth</th>
-                <th>Age</th>
                 <th>Date Admitted</th>
+                <th>InShelter Status</th>
+                <th>Departure Date</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>A001</td>
-                <td>N001</td>
-                <td>Fluffy</td>
-                <td>Cat</td>
-                <td>Female</td>
-                <td>11/09/2018</td>
-                <td>1</td>
-                <td>12/03/2019</td>
-            </tr>
-            <tr>
-                <td>A002</td>
-                <td>N001</td>
-                <td>Alix</td>
-                <td>Cat</td>
-                <td>Female</td>
-                <td>11/09/2017</td>
-                <td>2</td>
-                <td>12/03/2018</td>
-            </tr>
-            <tr>
-                <td>A003</td>
-                <td>N001</td>
-                <td>Katty</td>
-                <td>Cat</td>
-                <td>Female</td>
-                <td>11/09/2016</td>
-                <td>4</td>
-                <td>12/03/2018</td>
-            </tr>
-            <tr>
-               <td>A004</td>
-                <td>N002</td>
-                <td>Dobby</td>
-                <td>Dog</td>
-                <td>Male</td>
-                <td>11/09/2018</td>
-                <td>1</td>
-                <td>12/03/2019</td>
-            </tr>
-            <tr>
-              <td>A005</td>
-                <td>N003</td>
-                <td>Doug</td>
-                <td>Parrot</td>
-                <td>Female</td>
-                <td>07/09/2017</td>
-                <td>2</td>
-                <td>11/03/2018</td>
-            </tr>
+@foreach(var row in db.Query(selectQueryString))
+{
+<tr> 
+<td>@row.AnimalID</td> 
+<td>@row.ShelterID</td> 
+<td>@row.AnimalName</td> 
+<td>@row.AnimalType</td>
+<td>@row.Gender</td> 
+<td>@row.DateOfBirth</td> 
+<td>@row.DateAdmitted</td>
+<td>@row.InShelterStatus</td> 
+<td>@row.DepartureDate</td> 
+</tr> 
+}
         </tbody>
     </table>
 </div>
