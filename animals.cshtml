@@ -98,10 +98,10 @@ var shelterList= "select * from animal";
 <td>@row.AnimalName</td> 
 <td>@row.AnimalType</td>
 <td>@row.Gender</td> 
-<td>@row.DateOfBirth</td> 
-<td>@row.DateAdmitted</td>
+<td>@row.DateOfBirth.ToString("MM/dd/yyyy")</td> 
+<td>@row.DateAdmitted.ToString("MM/dd/yyyy")</td>
 <td>@row.InShelterStatus</td> 
-<td>@row.DepartureDate</td> 
+<td>@row.DepartureDate.ToString("MM/dd/yyyy")</td> 
 </tr> 
 }
         </tbody>
