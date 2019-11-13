@@ -2,7 +2,7 @@
 @{
 var db = Database.Open("my-connection"); 
 var selectQueryString = "select * from Animal_Page order by AnimalID"; 
-var shelterList= "select * from animal";
+var shelterList= "select a.* from animal a join shelter s on s.ShelterID = a.ShelterID";
 }
 
 <!-- The Modal -->
@@ -28,7 +28,7 @@ var shelterList= "select * from animal";
  <select class = "form-control" id ="shelterid" name = "shelterid">
    @foreach(var shelterrow in db.Query(shelterList))
    {
-   <option value = "@shelterrow.ShelterID">@shelterrow.ShelterID</option>
+   <option value = "@shelterrow.s.ShelterID">@shelterrow.s.ShelterID</option>
    }
     </select>
   </div>
