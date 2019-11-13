@@ -1,5 +1,8 @@
 ﻿@{Layout = "_Layout.cshtml";}
-
+@{
+var db = Database.Open("SmallBakery"); 
+var selectQueryString = "SELECT * FROM Product ORDER BY Name"; 
+}
 <h1>Animals</h1>
 <div class="table-responsive">
     <table class="table table-hover">
