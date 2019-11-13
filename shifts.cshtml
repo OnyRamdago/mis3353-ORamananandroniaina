@@ -1,1 +1,34 @@
 @{Layout = "_Layout.cshtml";}
+@{
+var db = Database.Open("my-connection"); 
+var selectQueryString = "select s.* from shift s"; 
+}
+<h1>Shifts</h1>
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+              ShiftID, ShelterID, VolunteerID, ShiftDate, WorkDone
+                <th>Shift ID</th>
+                <th>Shelter ID</th>
+                <th>Volunteer ID</th
+                <th>WorkDone</th>
+                <th>Shift Date</th>
+             
+                
+            </tr>
+        </thead>
+        <tbody>
+ @foreach(var row in db.Query(selectQueryString))
+{
+<tr> 
+<td>@row.ShiftID</td> 
+<td>@row.ShelterID</td> 
+<td>@row.VolunteerID</td> 
+<td>@row.WorkDone</td>
+<td>@row.ShiftDate</td>
+</tr> 
+}
+        </tbody>
+    </table>
+</div>
