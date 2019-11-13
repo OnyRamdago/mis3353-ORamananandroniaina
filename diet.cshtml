@@ -1,1 +1,35 @@
 @{Layout = "_Layout.cshtml";}
+@{
+var db = Database.Open("my-connection"); 
+var selectQueryString = "select d.* from diet d"; 
+}
+<h1>Diets</h1>
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Diet ID</th>
+                <th>Animal ID</th>
+                <th>Food ID</th>
+                <th>Feeding Quantity</th>
+                <th>Diet Start Date</th>
+                <th>Diet End Date</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+@foreach(var row in db.Query(selectQueryString))
+{
+<tr> 
+<td>@row.DietID</td> 
+<td>@row.AnimalID</td> 
+<td>@row.FoodID</td> 
+<td>@row.FeedingQuantity</td>
+<td>@row.DietStart</td> 
+<td>@row.DietEnd</td> 
+<td>@row.Description</td>
+</tr> 
+}
+        </tbody>
+    </table>
+</div>
