@@ -1,7 +1,7 @@
 ﻿@{Layout = "_Layout.cshtml";}
 @{
 var db = Database.Open("my-connection"); 
-var selectQueryString = "select a.* from animal a"; 
+var selectQueryString = "select * from Animal_Page order by AnimalID"; 
 var shelterList= "select * from animal";
 }
 
