@@ -92,6 +92,11 @@ var shelterList= "select * from animal";
         <tbody>
 @foreach(var row in db.Query(selectQueryString))
 {
+          string departDisplay = "";
+          if (row.DepartureDate.ToString("MM/dd/yyyy") != "01/01/0001")
+          {
+          departDisplay = row.DepartureDate.ToString("MM/dd/yyyy");
+          }
 <tr> 
 <td>@row.AnimalID</td> 
 <td>@row.ShelterID</td> 
@@ -101,7 +106,7 @@ var shelterList= "select * from animal";
 <td>@row.DateOfBirth.ToString("MM/dd/yyyy")</td> 
 <td>@row.DateAdmitted.ToString("MM/dd/yyyy")</td>
 <td>@row.InShelterStatus</td> 
-<td>@row.DepartureDate.ToString("MM/dd/yyyy")</td> 
+<td>@departDisplay</td> 
 </tr> 
 }
         </tbody>
