@@ -25,7 +25,7 @@ var shelterList= "select * from animal";
   </div>
   <div class="form-group">
     <label for="shelterid">Shelter ID:</label>
- <select id ="shelterid" name = "shelterid">
+ <select class = "form-control" id ="shelterid" name = "shelterid">
    @foreach(var shelterrow in db.Query(shelterList))
    {
    <option value = "@shelterrow.ShelterID">@shelterrow.ShelterID</option>
