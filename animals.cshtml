@@ -1,7 +1,7 @@
 ﻿@{Layout = "_Layout.cshtml";}
 @{
 var db = Database.Open("my-connection"); 
-var selectQueryString = "select * from Animal"; 
+var selectQueryString = "select a.* from animal a"; 
 }
 <h1>Animals</h1>
 <div class="table-responsive">
