@@ -1,4 +1,8 @@
 @{Layout = "_Layout.cshtml";}
+@{
+var db = Database.Open("my-connection"); 
+var selectQueryString = "select a.* from volunteer v"; 
+}
 <h1>Volunteers</h1>
 <div class="table-responsive">
     <table class="table table-hover">
@@ -12,32 +16,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>V001</td>
-                <td>Zuzula</td>
-                <td>Nick</td>
-                <td>A</td>
-                
-            </tr>
- 
-            <tr>
-                <td>V002</td>
-                <td>Brook</td>
-                <td>Tessa</td>
-                <td>B</td>
-            </tr>
-            <tr>
-               <td>V003</td>
-                <td>Morgan</td>
-                <td>Abi</td>
-                <td>B</td>
-            </tr>
-            <tr>
-               <td>V003</td>
-                <td>Exel</td>
-                <td>Mike</td>
-                <td>A</td>
-            </tr>
+ @foreach(var row in db.Query(selectQueryString))
+{
+<tr> 
+<td>@row.VolunteerID</td> 
+<td>@row.LastName</td> 
+<td>@row.FirstName</td> 
+<td>@row.Certificate</td>
+</tr> 
+}
         </tbody>
     </table>
 </div>
