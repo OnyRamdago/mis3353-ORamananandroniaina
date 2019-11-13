@@ -3,8 +3,7 @@
 
 var db = Database.Open("my-connection"); 
 db.Execute("insert into animal(AnimalID, ShelterID, AnimalName, AnimalType, Gender, DateOfBirth, DateAdmitted, DepartureDate, InShelterStatus)
-values (@0, @1,@2,@3,@4,@5,@6,@7,@8)",Request.Form["animalid"],Request.Form["shelterid"],Request.Form["animalname"], Request.Form["animaltype"],Request.Form["gender"],
-Request.Form["dob"],Request.Form["admitdate"],Request.Form["depdate"],Request.Form["status"]);
+values (@0, @1,@2,@3,@4,@5,@6,@7,@8)",Request.Form["animalid"],Request.Form["shelterid"],Request.Form["animalname"], Request.Form["animaltype"],Request.Form["gender"],Request.Form["dob"],Request.Form["admitdate"],Request.Form["depdate"],Request.Form["status"]);
 }
 <div class="alert alert-success">
   <strong>Success!</strong> Record Saved.
