@@ -2,8 +2,73 @@
 @{
 var db = Database.Open("my-connection"); 
 var selectQueryString = "select c.* from CLIENT c"; 
+var clientList= "select * from CLIENT";
 }
-<h1>Clients</h1>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Add New Client</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+         <form method="post" action="save-client">
+  <div class="form-group">
+    <label for="clientid">Client ID:</label>
+    <input type="text" class="form-control" id="clientid" name = "clientid">
+  </div>
+  <div class="form-group">
+    <label for="firstname">First Name:</label>
+     <input type="text" class="form-control" id="firstname" name = "firstname">
+  </div>
+  <div class="form-group">
+    <label for="animalname">Animal Name:</label>
+    <input type="text" class="form-control" id="animalname" name = "animalname">
+  </div>
+   <div class="form-group">
+    <label for="animaltype">Animal Type:</label>
+    <input type="text" class="form-control" id="animaltype" name = "animaltype">
+  </div>
+  <div class="form-group">
+    <label for="gender">Gender:</label>
+    <input type="text" class="form-control" id="gender" name = "gender">
+  </div>
+    <div class="form-group">
+    <label for="dob">Date of Birth:</label>
+    <input type="text" class="form-control" id="dob" name = "dob">
+  </div>
+  <div class="form-group">
+    <label for="admitdate">Date Admitted:</label>
+    <input type="text" class="form-control" id="admitdate" name = "admitdate">
+  </div>
+    <div class="form-group">
+    <label for="depdate">Departure Date:</label>
+    <input type="text" class="form-control" id="depdate" name = "depdate">
+  </div>
+    <div class="form-group">
+    <label for="status">In-Shelter Status:</label>
+    <input type="text" class="form-control" id="status" name = "status">
+  </div>
+<button type="submit" class="btn btn-primary">Save</button>
+</form> 
+      </div>
+    </div>
+  </div>
+</div>
+
+<h1>
+    Clients
+<!-- Button to Open the Modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  +
+</button>
+</h1>
 <div class="table-responsive">
     <table class="table table-hover">
         <thead>
