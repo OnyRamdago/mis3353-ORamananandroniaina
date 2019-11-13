@@ -1,9 +1,75 @@
 @{Layout = "_Layout.cshtml";}
 @{
 var db = Database.Open("my-connection"); 
-var selectQueryString = "select d.* from diet d"; 
+var selectQueryString = "select * from Diet_Page"; 
+var foodList= "select * from Food";
+var animalList = "select * from Animal";
 }
-<h1>Diets</h1>
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Add New Diet</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+         <form method="post" action="save-diets.cshtml">
+  <div class="form-group">
+    <label for="dietid">Diet ID:</label>
+    <input type="text" class="form-control" id="dietid" name = "dietid">
+  </div>
+  <div class="form-group">
+    <label for="animalList">Animal ID:</label>
+ <select class = "form-control" id ="animid" name = "animid">
+   @foreach(var animalrow in db.Query(animalList))
+   {
+   <option value = "@animalrow.AnimalID">@animalrow.AnimalID</option>
+   }
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="animalList">Food ID:</label>
+<select class = "form-control" id ="foodid" name = "foodid">
+   @foreach(var foodrow in db.Query(foodList))
+   {
+   <option value = "@foodrow.FoodID">@foodrow.FoodID</option>
+   }  </div>
+   <div class="form-group">
+    <label for="feedqty">Feeding Quantity:</label>
+    <input type="text" class="form-control" id="feedqty" name = "feedqty">
+  </div>
+  <div class="form-group">
+    <label for="start">Diet Start Date:</label>
+    <input type="text" class="form-control" id="start" name = "start">
+  </div>
+    <div class="form-group">
+    <label for="end">Diet End Date:</label>
+    <input type="text" class="form-control" id="end" name = "end">
+  </div>
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <input type="text" class="form-control" id="description" name = "description">
+  </div>
+<button type="submit" class="btn btn-primary">Save</button>
+</form> 
+      </div>
+    </div>
+  </div>
+</div>
+
+<h1>
+    Diets
+<!-- Button to Open the Modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  +
+</button>
+</h1>
 <div class="table-responsive">
     <table class="table table-hover">
         <thead>
