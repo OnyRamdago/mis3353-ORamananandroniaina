@@ -1,11 +1,13 @@
 @{Layout = "_Layout.cshtml";}
+@{
 
-<p>@Request.Form["animalid"]</p>
-<p>@Request.Form["shelterid"]</p>
-<p>@Request.Form["animalname"]</p>
-<p>@Request.Form["animaltype"]</p>
-<p>@Request.Form["gender"]</p>
-<p>@Request.Form["dob"]</p>
-<p>@Request.Form["admitdate"]</p>
-<p>@Request.Form["depdate"]</p>
-<p>@Request.Form["status"]</p>
+var db = Database.Open("my-connection"); 
+db.Execute("insert into animal(AnimalID, ShelterID, AnimalName, AnimalType, Gender, DateOfBirth, DateAdmitted, DepartureDate, InShelterStatus)
+values (@0, @1,@2,@3,@4,@5,@6,@7,@8)",Request.Form["animalid"],Request.Form["shelterid"], Request.Form["animaltype"],Request.Form["gender"],
+Request.Form["dob"],Request.Form["admitdate"],Request.Form["depdate"],Request.Form["status"]);
+}
+<div class="alert alert-success">
+  <strong>Success!</strong> Record Saved.
+</div>
+
+
