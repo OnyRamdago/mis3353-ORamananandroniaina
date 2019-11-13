@@ -1,1 +1,34 @@
 @{Layout = "_Layout.cshtml";}
+@{
+var db = Database.Open("my-connection"); 
+var selectQueryString = "select sr.* from service sr"; 
+}
+<h1>Service</h1>
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+             
+                <th>Service ID</th>
+                <th>Animal ID</th>
+                <th>Client ID</th>
+                <th>ServiceType</th>
+                <th>ServiceDate</th>
+   
+
+            </tr>
+        </thead>
+        <tbody>
+@foreach(var row in db.Query(selectQueryString))
+{
+<tr> 
+<td>@row.ServiceID</td> 
+<td>@row.AnimalID</td> 
+<td>@row.ClientID</td> 
+<td>@row.ServiceType</td>
+<td>@row.ServiceDate</td> 
+</tr> 
+}
+        </tbody>
+    </table>
+</div>
