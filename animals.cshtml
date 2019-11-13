@@ -2,6 +2,7 @@
 @{
 var db = Database.Open("my-connection"); 
 var selectQueryString = "select a.* from animal a"; 
+var shelterList= "select * from animal";
 }
 
 <!-- The Modal -->
@@ -24,7 +25,12 @@ var selectQueryString = "select a.* from animal a";
   </div>
   <div class="form-group">
     <label for="shelterid">Shelter ID:</label>
-    <input type="text" class="form-control" id="shelterid" name = "shelterid">
+ <select id ="shelterid" name = "shelterid">
+   @foreach(var shelterrow in db.Query(shelterList))
+   {
+   <option value = "@shelterrow.ShelterID">@shelterrow.ShelterID</options>
+   }
+    </select>
   </div>
   <div class="form-group">
     <label for="animalname">Animal Name:</label>
