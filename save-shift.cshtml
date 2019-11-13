@@ -2,7 +2,7 @@
 
 @{
 var db = Database.Open("my-connection"); 
-db.Execute("insert into Shift (ShiftID, ShelterID, VolunteerID, ShiftDate, WorkDone) values (@0, @1, @2, @3, @4)", Request.Form["shiftid"], Request.Form["shelterid"], Request.Form["volunteerid"],Request.Form["shiftdate"] Request.Form["workdone"]);
+db.Execute("insert into Shift (ShiftID, ShelterID, VolunteerID, ShiftDate, WorkDone) values (@0, @1, @2, @3, @4)", Request.Form["shiftid"], Request.Form["shelterid"], Request.Form["volunteerid"], Request.Form["shiftdate"], Request.Form["workdone"]);
 }
 <div class="alert alert-success">
   <strong>Success!</strong> Record Saved
