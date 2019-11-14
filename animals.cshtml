@@ -87,6 +87,7 @@ var shelterList= "select a.* from animal a join shelter s on s.ShelterID = a.She
                 <th>Date Admitted</th>
                 <th>InShelter Status</th>
                 <th>Departure Date</th>
+              <th></th>
             </tr>
         </thead>
         <tbody>
@@ -106,7 +107,8 @@ var shelterList= "select a.* from animal a join shelter s on s.ShelterID = a.She
 <td>@row.DateOfBirth.ToString("MM/dd/yyyy")</td> 
 <td>@row.DateAdmitted.ToString("MM/dd/yyyy")</td>
 <td>@row.InShelterStatus</td> 
-<td>@departDisplay</td> 
+<td>@departDisplay</td>
+  <td>@<button type="button" class="btn btn-primary">Primary</button></td>
 </tr> 
 }
         </tbody>
