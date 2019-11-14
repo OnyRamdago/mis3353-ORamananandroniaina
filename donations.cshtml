@@ -19,7 +19,7 @@ var donorList= "select d.* from donation d join Donor dr on dr.DonorID = d.Donor
 
       <!-- Modal body -->
       <div class="modal-body">
-         <form method="post" action="save-donations">
+         <form method="post" action="save-donation">
   <div class="form-group">
     <label for="donid">Donation ID:</label>
     <input type="text" class="form-control" id="donid" name = "donid">
@@ -38,7 +38,7 @@ var donorList= "select d.* from donation d join Donor dr on dr.DonorID = d.Donor
  <select class = "form-control" id ="donorid" name = "donorid">
    @foreach(var donorrow in db.Query(donorList))
    {
-   <option value = "@donorrow.DonorID">@donorRow.DonorID</option>
+   <option value = "@donorrow.DonorID">@donorrow.DonorID</option>
    }
     </select>
   </div>
