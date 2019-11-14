@@ -2,7 +2,7 @@
 
 @{
 var db = Database.Open("my-connection"); 
-db.Execute("insert into Donor (DonorID, LastName, FirstName, StreetAddress, City, State, ZipCode, PhoneNumber) values (@0, @1, @2, @3, @4, @5, @6, @7)", Request.Form["donorid"], Request.Form["lastname"], Request.Form["firstname"], Request.Form["streetaddress"], Request.Form["city"], Request.Form["state"], Request.Form["zipcode"], Request.Form["pnum"]);
+db.Execute("insert into Donor (DonorID, LastName, FirstName, StreetAddress, City, State, ZipCode, CellPhone) values (@0, @1, @2, @3, @4, @5, @6, @7)", Request.Form["donorid"], Request.Form["lastname"], Request.Form["firstname"], Request.Form["streetaddress"], Request.Form["city"], Request.Form["state"], Request.Form["zipcode"], Request.Form["pnum"]);
 }
 <div class="alert alert-success">
   <strong>Success!</strong> Record Saved
