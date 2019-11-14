@@ -1,0 +1,9 @@
+@{Layout = "_Layout.cshtml";}
+
+@{
+var db = Database.Open("my-connection"); 
+db.Execute("insert into Food (FoodID, FoodName, Stock) values (@0, @1, @2)", Request.Form["foodid"], Request.Form["fname"], Request.Form["stock"]);
+}
+<div class="alert alert-success">
+  <strong>Success!</strong> Record Saved
+</div>
