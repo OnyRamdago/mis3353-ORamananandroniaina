@@ -117,17 +117,18 @@ var shelterList= "select a.* from animal a join shelter s on s.ShelterID = a.She
 <script>
   $(document).ready(function(){
   $(".myEdit").click(function(){
-  $("#modalTitle").text("Edit Aircraft");
+  
+    $("#modalTitle").text("Edit Aircraft");
  
-  $("#animalid").val($(this).attr("data-animalid"));
-  $("#shelterid").val($(this).attr("data-shelterid"));
-  $("#animalname").val($(this).attr("data-animalname"));
-  $("#animaltype").val($(this).attr("data-animaltype"));
-  $("#gender").val($(this).attr("data-gender"));
-  $("#dob").val($(this).attr("data-dob"));
-  $("#depdate").val($(this).attr("data-depdate"));
-  $("#admitdate").val($(this).attr("data-admitdate"));
-  $("#status").val($(this).attr("data-status"));
+  $("#animalid").val($this.attr("data-animalid"));
+  $("#shelterid").val($this.attr("data-shelterid"));
+  $("#animalname").val($this.attr("data-animalname"));
+  $("#animaltype").val($this.attr("data-animaltype"));
+  $("#gender").val($this.attr("data-gender"));
+  $("#dob").val($this.attr("data-dob"));
+  $("#depdate").val($this.attr("data-depdate"));
+  $("#admitdate").val($this.attr("data-admitdate"));
+  $("#status").val($this.attr("data-status"));
                      
   $("myModal").modal({
              show: true
