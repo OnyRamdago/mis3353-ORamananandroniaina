@@ -90,8 +90,8 @@ var animalList = "select * from Animal";
 <td>@row.AnimalID</td> 
 <td>@row.FoodID</td> 
 <td>@row.FeedingQuantity</td>
-<td>@row.DietStart</td> 
-<td>@row.DietEnd</td> 
+<td>@row.DietStart.ToString("MM/dd/yyyy")</td> 
+<td>@row.DietEnd.ToString("MM/dd/yyyy")</td> 
 </tr> 
 }
         </tbody>
