@@ -124,7 +124,7 @@ var shelterList= "select a.* from animal a join shelter s on s.ShelterID = a.She
   $("#shelterid").val(this.getAttribute("data-shelterid"));
   $("#animalname").val(this.getAttribute("data-animalname"));
   $("#animaltype").val(this.getAttribute("data-animaltype"));
-  $("#gender").val(this.attr("data-gender"));
+  $("#gender").val(this.getAttribute("data-gender"));
   $("#dob").val(this.getAttribute("data-dob"));
   $("#depdate").val(this.getAttribute("data-depdate"));
   $("#admitdate").val(this.getAttribute("data-admitdate"));
