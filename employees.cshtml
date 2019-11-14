@@ -107,8 +107,8 @@ var shelterList = "select e.* from employee e join shelter s on s.shelterid = e.
 <td>@row.FirstName</td> 
 <td>@row.LastName</td>
 <td>@row.Department</td> 
-<td>@row.DOB</td> 
-<td>@row.StartDate</td> 
+<td>@row.DOB.ToString("MM/dd/yyyy")</td> 
+<td>@row.StartDate.ToString("MM/dd/yyyy")</td> 
 <td>@row.EmployeePhone</td> 
 <td>@row.EmployeeState</td>
 <td>@row.ZipCode</td>
