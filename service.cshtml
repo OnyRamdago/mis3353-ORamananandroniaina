@@ -3,7 +3,53 @@
 var db = Database.Open("my-connection"); 
 var selectQueryString = "select * from Service_Page"; 
 }
-<h1>Service</h1>
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Add New Service</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+         <form method="post" action="save-service">
+  <div class="form-group">
+    <label for="serviceid">Service ID:</label>
+    <input type="text" class="form-control" id="serviceid" name = "serviceid">
+  </div>
+  <div class="form-group">
+    <label for="animalid">Animal ID:</label>
+    <input type="text" class="form-control" id="animalid" name = "animalid">
+  </div>
+ <div class="form-group">
+    <label for="clientid">Client ID:</label>
+    <input type="text" class="form-control" id="clientid" name = "clientid">
+  </div>
+   <div class="form-group">
+    <label for="servicetype">Service Type:</label>
+    <input type="text" class="form-control" id="servicetype" name = "servicetype">
+  </div>
+  <div class="form-group">
+    <label for="servicedate">Service Date:</label>
+    <input type="text" class="form-control" id="servicedate" name = "servicedate">
+  </div>  
+   <button type="submit" class="btn btn-primary">Save</button>
+</form> 
+      </div>
+    </div>
+  </div>
+</div>
+<h1>
+    Service
+<!-- Button to Open the Modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  +
+</button>
+</h1>
 <div class="table-responsive">
     <table class="table table-hover">
         <thead>
@@ -21,6 +67,12 @@ var selectQueryString = "select * from Service_Page";
         <tbody>
 @foreach(var row in db.Query(selectQueryString))
 {
+          string departDisplay = "";
+          if (row.ServiceDate.ToString("MM/dd/yyyy") != "01/01/0001")
+          {
+          departDisplay = row.ServiceDate.ToString("MM/dd/yyyy");
+          }
+
 <tr> 
 <td>@row.ServiceID</td> 
 <td>@row.AnimalID</td> 
