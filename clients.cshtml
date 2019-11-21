@@ -100,8 +100,9 @@ var selectQueryString = "select * from Client_Page";
 <script>
 $(document).ready(function(){
   
-  $("#myEdit").click(function(){
+  $(".myEdit").click(function(){
     $("#modalTitle").text("Edit Client");
+    
     $("#clientid").val($(this).attr("data-clientid"));
     $("#firstname").val($(this).attr("data-firstname"));
     $("#lastname").val($(this).attr("data-lastname"));
