@@ -117,20 +117,17 @@ $(document).ready(function(){
      });
   });
     $("#myClose").click(function(){
-    $("#modalTitle").text("Edit Client");
+    $("#modalTitle").text("Add New Client");
     
-    $("#clientid").val($(this).attr("data-clientid"));
-    $("#firstname").val($(this).attr("data-firstname"));
-    $("#lastname").val($(this).attr("data-lastname"));
-    $("#streetaddress").val($(this).attr("data-streetaddress"));
-    $("#city").val($(this).attr("data-city"));
-    $("#state").val($(this).attr("data-state"));
-    $("#zipcode").val($(this).attr("data-zipcode"));
-    $("#pnum").val($(this).attr("data-pnum"));
+    $("#clientid").val("");
+    $("#firstname").val("");
+    $("#lastname").val("");
+    $("#streetaddress").val("");
+    $("#city").val("");
+    $("#state").val("");
+    $("#zipcode").val("");
+    $("#pnum").val("");
 
-     $("#myModal").modal({
-       show: true
-     });
   });
 });
 </script>
