@@ -62,6 +62,7 @@ successMsg = "Client Added.";
     <label for="pnum">Phone Number:</label>
     <input type="text" class="form-control" id="pnum" name = "pnum">
   </div>
+    <input type="hidden" name="SaveType" id="SaveType" value="Add">
 <button type="submit" class="btn btn-primary">Save</button>
 </form> 
       </div>
@@ -127,6 +128,7 @@ $(document).ready(function(){
      $("#myModal").modal({
        show: true
      });
+    $("#SaveType").val("Edit");
   });
     $("#myClose").click(function(){
     $("#modalTitle").text("Add New Client");
@@ -139,6 +141,7 @@ $(document).ready(function(){
     $("#state").val("");
     $("#zipcode").val("");
     $("#pnum").val("");
+    $("#SaveType").val("Add");
 
   });
 });
