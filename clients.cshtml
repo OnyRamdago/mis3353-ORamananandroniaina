@@ -12,7 +12,7 @@ var selectQueryString = "select * from Client_Page";
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title" id= "modalTitle">Add New Client</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" id="myClose">&times;</button>
       </div>
 
       <!-- Modal body -->
@@ -101,6 +101,22 @@ var selectQueryString = "select * from Client_Page";
 $(document).ready(function(){
   
   $(".myEdit").click(function(){
+    $("#modalTitle").text("Edit Client");
+    
+    $("#clientid").val($(this).attr("data-clientid"));
+    $("#firstname").val($(this).attr("data-firstname"));
+    $("#lastname").val($(this).attr("data-lastname"));
+    $("#streetaddress").val($(this).attr("data-streetaddress"));
+    $("#city").val($(this).attr("data-city"));
+    $("#state").val($(this).attr("data-state"));
+    $("#zipcode").val($(this).attr("data-zipcode"));
+    $("#pnum").val($(this).attr("data-pnum"));
+
+     $("#myModal").modal({
+       show: true
+     });
+  });
+    $("#myClose").click(function(){
     $("#modalTitle").text("Edit Client");
     
     $("#clientid").val($(this).attr("data-clientid"));
