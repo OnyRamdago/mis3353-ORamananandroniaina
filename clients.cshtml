@@ -3,7 +3,7 @@
 var db = Database.Open("my-connection"); 
 var selectQueryString = "select * from Client_Page"; 
 string successMsg = "";
-if (isPost)
+if (IsPost)
 {
 db.Execute("insert into CLIENT (ClientID, LastName, FirstName, StreetAddress, City, State, ZipCode, PhoneNumber) values (@0, @1, @2, @3, @4, @5, @6, @7)", Request.Form["clientid"], Request.Form["lastname"], Request.Form["firstname"], Request.Form["streetaddress"], Request.Form["city"], Request.Form["state"], Request.Form["zipcode"], Request.Form["pnum"]);
 successMsg = "Client Added.";
