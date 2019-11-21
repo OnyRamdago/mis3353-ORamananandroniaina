@@ -91,7 +91,7 @@ var selectQueryString = "select * from Client_Page";
 <td>@row.State</td> 
 <td>@row.ZipCode</td>
 <td>@row.PhoneNumber</td> 
-  <td><button type="button" class="btn btn-primary" id = "myEdit">Edit</button></td>
+  <td><button type="button" class="btn btn-primary myEdit" data-clientid = "@row.ClientID" data-firstname="@row.FirstName" data-lastname="@row.LastName" data-streetaddress="@row.StreetAddress" data-city="@row.City" data-state="@row.State" data-zipcode="@row.ZipCode" data-pnum="@row.PhoneNumber">Edit</button></td>
 </tr> 
 }
         </tbody>
@@ -102,6 +102,15 @@ $(document).ready(function(){
   
   $("#myEdit").click(function(){
     $("#modalTitle").text("Edit Client");
+    $("#clientid").val($(this).attr("data-clientid"));
+    $("#firstname").val($(this).attr("data-firstname"));
+    $("#lastname").val($(this).attr("data-lastname"));
+    $("#streetaddress").val($(this).attr("data-streetaddress"));
+    $("#city").val($(this).attr("data-city"));
+    $("#state").val($(this).attr("data-state"));
+    $("#zipcode").val($(this).attr("data-zipcode"));
+    $("#pnum").val($(this).attr("data-pnum"));
+
      $('myModal').modal({
        show: 'true'
      });
