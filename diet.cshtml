@@ -4,8 +4,17 @@ var db = Database.Open("my-connection");
 var selectQueryString = "select * from Diet_Page"; 
 var foodList= "select * from Food";
 var animalList = "select * from Animal";
+string successMsg = "";
+if (IsPost){
+db.Execute("insert into Diet (DietID, AnimalID, FoodID, FeedingQuantity, DietStart, DietEnd, Description) values (@0, @1, @2, @3, @4, @5, @6)", Request.Form["dietid"], Request.Form["animalid"], Request.Form["foodid"], Request.Form["feedqty"], Request.Form["start"], Request.Form["end"], Request.Form["description"]);
+successMsg =" Diet added.";
 }
-
+}
+@if (successMsg != "") {
+<div class="alert alert-success">
+  <strong>Success!</strong> Record Saved
+</div>
+}
 <!-- The Modal -->
 <div class="modal" id="myModal">
   <div class="modal-dialog">
@@ -14,12 +23,12 @@ var animalList = "select * from Animal";
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title" id ="modaltitle">Add New Diet</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" id=myClose">&times;</button>
       </div>
 
       <!-- Modal body -->
       <div class="modal-body">
-         <form method="post" action="save-diet.cshtml">
+         <form method="post" action="">
   <div class="form-group">
     <label for="dietid">Diet ID:</label>
     <input type="text" class="form-control" id="dietid" name = "dietid">
