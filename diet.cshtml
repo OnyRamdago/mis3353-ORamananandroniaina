@@ -18,7 +18,7 @@ db.Execute("update Diet set  AnimalID =@1, FoodID=@2, FeedingQuantity=@3, DietSt
 successMsg =" Diet updated.";
 break;
 case "Delete": 
-db.Execute("delete from Diet where DietID=@0, Request.Form["dietid"]);
+db.Execute("delete from Diet where DietID=@0", Request.Form["dietid"]);
 successMsg =" Diet deleted.";
 break;
 }
