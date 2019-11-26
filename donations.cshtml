@@ -115,7 +115,13 @@ break;
 <td>@row.DonationAmount</td>
 <td>@row.DonationType</td> 
   <td><button type="button" class="btn btn-primary myEdit" data-donid = "@row.DonationID" data-shelterid = "@row.ShelterID" data-donorid = "@row.DonorID" data-donamt = "@row.DonationAmount" data-dontype = "@row.DonationType">Edit</button></td>
-  <td><form method="post" action=""><input type="hidden" name="donid" value="@row.DonationID"><input type="hidden" name="SaveType" value="Delete"><button type="submit" class="btn btn-primary">Delete</button></form></td>
+  <td>
+    <form method="post" action="">
+      <input type="hidden" name="donid" value="@row.DonationID">
+      <input type="hidden" name="SaveType" value="Delete">
+      <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
+    </form>
+  </td>
 </tr> 
 }
         </tbody>
