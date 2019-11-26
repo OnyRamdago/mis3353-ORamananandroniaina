@@ -30,7 +30,7 @@ break;
 @if(successMsg != "")
 {
 <div class="alert alert-success">
-  <strong>Success!</strong> Record Saved
+  <strong>Success!</strong> @successMsg
 </div>
 }
 <!-- The Modal -->
@@ -102,6 +102,7 @@ break;
                 <th>Donation Amount</th>
                 <th>Donation Type</th>
               <th></th>
+              <th></th>
             </tr>
         </thead>
         <tbody>
@@ -114,6 +115,7 @@ break;
 <td>@row.DonationAmount</td>
 <td>@row.DonationType</td> 
   <td><button type="button" class="btn btn-primary myEdit" data-donid = "@row.DonationID" data-shelterid = "@row.ShelterID" data-donorid = "@row.DonorID" data-donamt = "@row.DonationAmount" data-dontype = "@row.DonationType">Edit</button></td>
+  <td><form method="post" action=""><input type="hidden" name="donid" value="@row.DonationID"><input type="hidden" name="SaveType" value="Delete"><button type="submit" class="btn btn-primary">Delete</button></form></td>
 </tr> 
 }
         </tbody>
