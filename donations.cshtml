@@ -8,8 +8,22 @@ var donorList= "select d.* from donation d join Donor dr on dr.DonorID = d.Donor
 string successMsg = "";
 
 if (IsPost) {
+switch(Request.Form["SaveType"]) {
+case "Add":
 db.Execute("insert into Donation (DonationID, ShelterID, DonorID, DonationAmount, DonationType) values (@0, @1, @2, @3, @4)", Request.Form["donid"], Request.Form["shelterid"], Request.Form["donorid"], Request.Form["donamt"], Request.Form["dontype"]);
 successMsg = "Donation added.";
+break;
+
+case "Edit":
+db.Execute("update Donation set ShelterID=@1, DonorID=@2, DonationAmount=@3, DonationType=@4) where DonationId=@0", Request.Form["donid"], Request.Form["shelterid"], Request.Form["donorid"], Request.Form["donamt"], Request.Form["dontype"]);
+successMsg = "Donation updated.";
+break;
+
+case "Delete":
+db.Execute("delete from Donation where Donationid=@0", Request.Form["donid"]);
+successMsg = "Donation deleted.";
+break;
+}
 }
 }
 
@@ -63,7 +77,7 @@ successMsg = "Donation added.";
     <label for="dontype">Donation Type:</label>
     <input type="text" class="form-control" id="dontype" name = "dontype">
   </div>
-    
+    <input typ="hidden" name="SaveType" id="SaveType" value="Add">
 <button type="submit" class="btn btn-primary">Save</button>
 </form> 
       </div>
