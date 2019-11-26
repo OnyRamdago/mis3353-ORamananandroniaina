@@ -102,7 +102,7 @@ successMsg =" Diet added.";
 <td>@row.FeedingQuantity</td>
 <td>@row.DietStart.ToString("MM/dd/yyyy")</td> 
 <td>@row.DietEnd.ToString("MM/dd/yyyy")</td> 
-  <td><button type="button" class="btn btn-primary myEdit" data-dietid="@row.DietID" data-animalid="@row.AnimalID" data-foodid="@row.FoodID" data-feedingquantity="@row.FeedingQuantity" data-dietstart="@row.DietStart" data-dietend="@row.DietEnd">Edit</button></td>
+  <td><button type="button" class="btn btn-primary myEdit" data-dietid="@row.DietID" data-animalid="@row.AnimalID" data-foodid="@row.FoodID" data-feedqty="@row.FeedingQuantity" data-start="@row.DietStart" data-end="@row.DietEnd" data-discription="@row.Description">Edit</button></td>
 </tr> 
 }
         </tbody>
@@ -117,10 +117,10 @@ $(document).ready(function(){
     $("#dietid").val($(this).attr("data-dietid"));
     $("#animalid").val($(this).attr("data-animalid"));
     $("#foodid").val($(this).attr("data-foodid"));
-    $("#feedingquantity").val($(this).attr("data-feedingquantity"));
-    $("#streetaddress").val($(this).attr("data-streetaddress"));
-    $("#dietstart").val($(this).attr("data-dietstart"));
-    $("#dietend").val($(this).attr("data-dietend"));
+    $("#feedqty").val($(this).attr("data-feedqty"));
+    $("#start").val($(this).attr("data-start"));
+    $("#end").val($(this).attr("data-end"));
+   $("#discription").val($(this).attr("data-discription"));
      $("#myModal").modal({
        show: true
      });
@@ -132,9 +132,10 @@ $(document).ready(function(){
     $("#dietid").val("");
     $("#animalid").val("");
     $("#foodid").val("");
-    $("#feedingquantity").val("");
-    $("#dietstart").val("");
-    $("#dietend").val("");
+    $("#feedqty").val("");
+    $("#start").val("");
+    $("#end").val("");
+    $("#discription").val("");
     $("#SaveType").val("Add");
   });
 });
