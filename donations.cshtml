@@ -4,8 +4,21 @@ var db = Database.Open("my-connection");
 var selectQueryString = "select * from Donation_Page"; 
 var shelterList= "select d.* from donation d join shelter s on s.ShelterID = d.ShelterID";
 var donorList= "select d.* from donation d join Donor dr on dr.DonorID = d.DonorID";
+
+string successMsg = "";
+
+if (IsPost) {
+db.Execute("insert into Donation (DonationID, ShelterID, DonorID, DonationAmount, DonationType) values (@0, @1, @2, @3, @4)", Request.Form["donid"], Request.Form["shelterid"], Request.Form["donorid"], Request.Form["donamt"], Request.Form["dontype"]);
+successMsg = "Donation added.";
+}
 }
 
+@if(success != "")
+{
+<div class="alert alert-success">
+  <strong>Success!</strong> Record Saved
+</div>
+}
 <!-- The Modal -->
 <div class="modal" id="myModal">
   <div class="modal-dialog">
@@ -14,12 +27,12 @@ var donorList= "select d.* from donation d join Donor dr on dr.DonorID = d.Donor
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title" id = "modalTitle">Add New Donation</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" id = "myClose">&times;</button>
       </div>
 
       <!-- Modal body -->
       <div class="modal-body">
-         <form method="post" action="save-donation">
+         <form method="post" action="">
   <div class="form-group">
     <label for="donid">Donation ID:</label>
     <input type="text" class="form-control" id="donid" name = "donid">
