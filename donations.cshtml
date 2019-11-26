@@ -15,7 +15,7 @@ successMsg = "Donation added.";
 break;
 
 case "Edit":
-db.Execute("update Donation set ShelterID=@1, DonorID=@2, DonationAmount=@3, DonationType=@4) where DonationId=@0", Request.Form["donid"], Request.Form["shelterid"], Request.Form["donorid"], Request.Form["donamt"], Request.Form["dontype"]);
+db.Execute("update Donation set ShelterID=@1, DonorID=@2, DonationAmount=@3, DonationType=@4 where DonationId=@0", Request.Form["donid"], Request.Form["shelterid"], Request.Form["donorid"], Request.Form["donamt"], Request.Form["dontype"]);
 successMsg = "Donation updated.";
 break;
 
