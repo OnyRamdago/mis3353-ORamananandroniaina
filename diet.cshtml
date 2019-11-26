@@ -89,6 +89,7 @@ successMsg =" Diet added.";
                 <th>Feeding Quantity</th>
                 <th>Diet Start Date</th>
                 <th>Diet End Date</th>
+                <th>Description</th>
               <th></th>
             </tr>
         </thead>
@@ -102,6 +103,7 @@ successMsg =" Diet added.";
 <td>@row.FeedingQuantity</td>
 <td>@row.DietStart.ToString("MM/dd/yyyy")</td> 
 <td>@row.DietEnd.ToString("MM/dd/yyyy")</td> 
+<td>@row.Description</td>
   <td><button type="button" class="btn btn-primary myEdit" data-dietid="@row.DietID" data-animalid="@row.AnimalID" data-foodid="@row.FoodID" data-feedqty="@row.FeedingQuantity" data-start="@row.DietStart" data-end="@row.DietEnd" data-discription="@row.Description">Edit</button></td>
 </tr> 
 }
