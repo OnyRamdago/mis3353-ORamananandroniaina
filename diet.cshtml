@@ -26,7 +26,7 @@ break;
 }
 @if (successMsg != "") {
 <div class="alert alert-success">
-  <strong>Success!</strong> Record Saved
+  <strong>Success!</strong> @successMsg
 </div>
 }
 <!-- The Modal -->
@@ -105,6 +105,7 @@ break;
                 <th>Diet Start Date</th>
                 <th>Diet End Date</th>
               <th></th>
+               <th></th>
             </tr>
         </thead>
         <tbody>
@@ -118,7 +119,8 @@ break;
 <td>@row.DietStart.ToString("MM/dd/yyyy")</td> 
 <td>@row.DietEnd.ToString("MM/dd/yyyy")</td> 
   <td><button type="button" class="btn btn-primary myEdit" data-dietid="@row.DietID" data-animalid="@row.AnimalID" data-foodid="@row.FoodID" data-feedqty="@row.FeedingQuantity" data-start="@row.DietStart" data-end="@row.DietEnd" data-discription="@row.Description">Edit</button></td>
-</tr> 
+  <td>form method="post" action ="">< input type ="hidden" name="dietid" value="@row.dietid"><input type "hidden"  name = "SaveType" value ="Delete"<button type "submit" class "btn btn-primary">Delete</button></form></td>
+ </tr> 
 }
         </tbody>
     </table>
