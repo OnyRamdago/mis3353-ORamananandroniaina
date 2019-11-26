@@ -13,7 +13,7 @@ var animalList = "select * from Animal";
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Add New Diet</h4>
+        <h4 class="modal-title" id ="modaltitle">Add New Diet</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
@@ -80,6 +80,7 @@ var animalList = "select * from Animal";
                 <th>Feeding Quantity</th>
                 <th>Diet Start Date</th>
                 <th>Diet End Date</th>
+              <th></th>
             </tr>
         </thead>
         <tbody>
@@ -92,8 +93,40 @@ var animalList = "select * from Animal";
 <td>@row.FeedingQuantity</td>
 <td>@row.DietStart.ToString("MM/dd/yyyy")</td> 
 <td>@row.DietEnd.ToString("MM/dd/yyyy")</td> 
+  <td><button type="button" class="btn btn-primary myEdit" data-dietid="@row.DietID" data-animalid="@row.AnimalID" data-foodid="@row.FoodID" data-feedingquantity="@row.FeedingQuantity" data-dietstart="@row.DietStart" data-dietend="@row.DietEnd">Edit</button></td>
 </tr> 
 }
         </tbody>
     </table>
 </div>
+ <script>
+$(document).ready(function(){
+  
+  $(".myEdit").click(function(){
+    $("#modalTitle").text("Edit Diet");
+    
+    $("#dietid").val($(this).attr("data-dietid"));
+    $("#animalid").val($(this).attr("data-animalid"));
+    $("#foodid").val($(this).attr("data-foodid"));
+    $("#feedingquantity").val($(this).attr("data-feedingquantity"));
+    $("#streetaddress").val($(this).attr("data-streetaddress"));
+    $("#dietstart").val($(this).attr("data-dietstart"));
+    $("#dietend").val($(this).attr("data-dietend"));
+     $("#myModal").modal({
+       show: true
+     });
+    $("#SaveType").val("Edit");
+  });
+    $("#myClose").click(function(){
+    $("#modalTitle").text("Add New Diet");
+    
+    $("#dietid").val("");
+    $("#animalid").val("");
+    $("#foodid").val("");
+    $("#feedingquantity").val("");
+    $("#dietstart").val("");
+    $("#dietend").val("");
+    $("#SaveType").val("Add");
+  });
+});
+</script>
