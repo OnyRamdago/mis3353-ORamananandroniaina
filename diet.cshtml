@@ -6,8 +6,22 @@ var foodList= "select * from Food";
 var animalList = "select * from Animal";
 string successMsg = "";
 if (IsPost){
+switch (Request.Form["SaveType"])
+{
+
+case "Add": 
 db.Execute("insert into Diet (DietID, AnimalID, FoodID, FeedingQuantity, DietStart, DietEnd, Description) values (@0, @1, @2, @3, @4, @5, @6)", Request.Form["dietid"], Request.Form["animalid"], Request.Form["foodid"], Request.Form["feedqty"], Request.Form["start"], Request.Form["end"], Request.Form["description"]);
 successMsg =" Diet added.";
+break;
+case "Edit": 
+db.Execute("update Diet set  AnimalID =@1, FoodID=@2, FeedingQuantity=@3, DietStart=@4, DietEnd=@5, Description=@6 where DietID = @0", Request.Form["dietid"], Request.Form["animalid"], Request.Form["foodid"], Request.Form["feedqty"], Request.Form["start"], Request.Form["end"], Request.Form["description"]);
+successMsg =" Diet updated.";
+break;
+case "Delete": 
+db.Execute("delete from Diet where DietID=@0, Request.Form["dietid"]);
+successMsg =" Diet deleted.";
+break;
+}
 }
 }
 @if (successMsg != "") {
@@ -23,7 +37,7 @@ successMsg =" Diet added.";
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title" id ="modaltitle">Add New Diet</h4>
-        <button type="button" class="close" data-dismiss="modal" id=myClose">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" id="myClose">&times;</button>
       </div>
 
       <!-- Modal body -->
@@ -65,6 +79,7 @@ successMsg =" Diet added.";
     <label for="description">Description:</label>
     <input type="text" class="form-control" id="description" name = "description">
   </div>
+           <input typ = "hidden" name ="SaveType" id = "SaveType" value="Add">
 <button type="submit" class="btn btn-primary">Save</button>
 </form> 
       </div>
@@ -89,7 +104,6 @@ successMsg =" Diet added.";
                 <th>Feeding Quantity</th>
                 <th>Diet Start Date</th>
                 <th>Diet End Date</th>
-                <th>Description</th>
               <th></th>
             </tr>
         </thead>
@@ -103,7 +117,6 @@ successMsg =" Diet added.";
 <td>@row.FeedingQuantity</td>
 <td>@row.DietStart.ToString("MM/dd/yyyy")</td> 
 <td>@row.DietEnd.ToString("MM/dd/yyyy")</td> 
-<td>@row.Description</td>
   <td><button type="button" class="btn btn-primary myEdit" data-dietid="@row.DietID" data-animalid="@row.AnimalID" data-foodid="@row.FoodID" data-feedqty="@row.FeedingQuantity" data-start="@row.DietStart" data-end="@row.DietEnd" data-discription="@row.Description">Edit</button></td>
 </tr> 
 }
