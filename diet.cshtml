@@ -35,7 +35,7 @@ successMsg =" Diet added.";
   </div>
   <div class="form-group">
     <label for="animalList">Animal ID:</label>
- <select class = "form-control" id ="animid" name = "animid">
+ <select class = "form-control" id ="animalid" name = "animalid">
    @foreach(var animalrow in db.Query(animalList))
    {
    <option value = "@animalrow.AnimalID">@animalrow.AnimalID</option>
