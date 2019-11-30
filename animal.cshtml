@@ -1,7 +1,8 @@
 @{Layout = "_Layout.cshtml";}
-
+@{
 var db = Database.Open("my-connection"); 
 var selectQueryString = "select A.AnimalID, A.ShelterID, A.AnimalName, A.DateOfBirth, A.Age, AnimalCLassification, Breed, InShelterStatusType, DateAdmitted, DepartureDate, GenderType from Animal A JOIN Shelter S ON S.ShelterID = A.ShelterID JOIN AnimalType ATY ON ATY.AnimalTypeID = A.AnimalTypeID JOIN AnimalGender AG ON AG.AnimalGenderID = A.AnimalGenderID JOIN InShelterStatus ISS ON ISS.InShelterStatusID = A.InshelterStatusID"
+}
 <h1>Aircraft</h1>
 <div class="table-responsive">
     <table class="table table-hover">
