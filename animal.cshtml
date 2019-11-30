@@ -1,1 +1,44 @@
 @{Layout = "_Layout.cshtml";}
+
+var db = Database.Open("my-connection"); 
+var selectQueryString = "select A.AnimalID, A.ShelterID, A.AnimalName, A.DateOfBirth, A.Age, AnimalCLassification, Breed, InShelterStatusType, DateAdmitted, DepartureDate, GenderType from Animal A JOIN Shelter S ON S.ShelterID = A.ShelterID JOIN AnimalType ATY ON ATY.AnimalTypeID = A.AnimalTypeID JOIN AnimalGender AG ON AG.AnimalGenderID = A.AnimalGenderID JOIN InShelterStatus ISS ON ISS.InShelterStatusID = A.InshelterStatusID"
+<h1>Aircraft</h1>
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Animal ID</th>
+                <th>Shelter ID</th>
+                <th>Animal Name</th>
+                <th>Date of Birth</th>
+                <th>Age</th>
+                <th>Animal Classification</th>
+                <th>Breed</th>
+                <th>In-Shelter Status</th>
+                <th>Date Admitted</th>
+                <th>Departure Date</th>
+                <th>Gender</th>
+
+            </tr>
+        </thead>
+      
+        <tbody>
+@foreach(var row in db.Query(selectQueryString))
+{
+<tr> 
+<td>@row.AnimalID</td> 
+<td>@row.ShelterID</td> 
+<td>@row.AnimalName</td> 
+<td>@row.DateOfBirth</td>
+<td>@row.Age</td> 
+<td>@row.AnimalClassification</td> 
+<td>@row.Breed</td>
+<td>@row.InShelterStatusType</td> 
+<td>@row.DateAdmitted</td> 
+<td>@row.DepartureDate</td> 
+<td>@row.GenderType</td>
+</tr> 
+}
+        </tbody>
+    </table>
+</div>
