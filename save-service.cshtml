@@ -1,9 +1,0 @@
-@{Layout = "_Layout.cshtml";}
-
-@{
-var db = Database.Open("my-connection"); 
-db.Execute("insert into Service (ServiceID, AnimalID, ClientID, ServiceType, ServiceDate) values (@0, @1, @2, @3, @4)", Request.Form["serviceid"], Request.Form["animalid"], Request.Form["clientid"], Request.Form["servicetype"], Request.Form["servicedate"]);
-}
-<div class="alert alert-success">
-  <strong>Success!</strong> Record Saved
-</div>
