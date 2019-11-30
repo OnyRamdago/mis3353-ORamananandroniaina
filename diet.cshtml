@@ -10,11 +10,11 @@ switch (Request.Form["SaveType"])
 {
 
 case "Add": 
-db.Execute("insert into Diet (DietID, AnimalID, FoodID, FeedingQuantity, DietStart, DietEnd, Description) values (@0, @1, @2, @3, @4, @5, @6)", Request.Form["dietid"], Request.Form["animalid"], Request.Form["foodid"], Request.Form["feedqty"], Request.Form["start"], Request.Form["end"], Request.Form["description"]);
+db.Execute("insert into Diet (DietID, AnimalID, FoodID, FeedingAmount, TotalCalories, DietStart, DietEnd, Description) values (@0, @1, @2, @3, @4, @5, @6, @7)", Request.Form["dietid"], Request.Form["animalid"], Request.Form["foodid"], Request.Form["feedqty"], Request.Form["totalcalories"], Request.Form["start"], Request.Form["end"], Request.Form["description"]);
 successMsg =" Diet added.";
 break;
 case "Edit": 
-db.Execute("update Diet set  AnimalID =@1, FoodID=@2, FeedingQuantity=@3, DietStart=@4, DietEnd=@5, Description=@6 where DietID = @0", Request.Form["dietid"], Request.Form["animalid"], Request.Form["foodid"], Request.Form["feedqty"], Request.Form["start"], Request.Form["end"], Request.Form["description"]);
+db.Execute("update Diet set  AnimalID =@1, FoodID=@2, FeedingAmount=@3, TotalCaloriest=@4, DietStart=@5, DietEnd=@6, Description=@7 where DietID = @0", Request.Form["dietid"], Request.Form["animalid"], Request.Form["foodid"], Request.Form["feedqty"], Request.Form["totalcalories"], Request.Form["start"], Request.Form["end"], Request.Form["description"]);
 successMsg =" Diet updated.";
 break;
 case "Delete": 
@@ -64,8 +64,12 @@ break;
    <option value = "@foodrow.FoodID">@foodrow.FoodID</option>
     }  </select></div>
    <div class="form-group">
-    <label for="feedqty">Feeding Quantity:</label>
+    <label for="feedqty">Feeding Amount:</label>
     <input type="text" class="form-control" id="feedqty" name = "feedqty">
+  </div>
+  <div class="form-group">
+    <label for="totalcalories">Total Calories:</label>
+    <input type="text" class="form-control" id="totalcalories" name = "totalcalories">
   </div>
   <div class="form-group">
     <label for="start">Diet Start Date:</label>
@@ -101,9 +105,11 @@ break;
                 <th>Diet ID</th>
                 <th>Animal ID</th>
                 <th>Food ID</th>
-                <th>Feeding Quantity</th>
+                <th>Feeding Amount</th>
+                <th>Total Calories</th>
                 <th>Diet Start Date</th>
                 <th>Diet End Date</th>
+              <th>Description</th>
               <th></th>
                <th></th>
             </tr>
@@ -115,10 +121,12 @@ break;
 <td>@row.DietID</td> 
 <td>@row.AnimalID</td> 
 <td>@row.FoodID</td> 
-<td>@row.FeedingQuantity</td>
+<td>@row.FeedingAmount</td>
+  <td>@row.TotalCalories</td>
 <td>@row.DietStart.ToString("MM/dd/yyyy")</td> 
 <td>@row.DietEnd.ToString("MM/dd/yyyy")</td> 
-  <td><button type="button" class="btn btn-primary myEdit" data-dietid="@row.DietID" data-animalid="@row.AnimalID" data-foodid="@row.FoodID" data-feedqty="@row.FeedingQuantity" data-start="@row.DietStart" data-end="@row.DietEnd" data-discription="@row.Description"><i class="fas fa-pen-square"></i></button></td>
+    <td>@row.Description</td>
+  <td><button type="button" class="btn btn-primary myEdit" data-dietid="@row.DietID" data-animalid="@row.AnimalID" data-foodid="@row.FoodID" data-feedqty="@row.FeedingAmount" data-totalcalories="@row.TotalCalories"data-start="@row.DietStart" data-end="@row.DietEnd" data-discription="@row.Description"><i class="fas fa-pen-square"></i></button></td>
   <td>
     <form method="post" action ="">
       <input type ="hidden" name="dietid" value="@row.DietID">
@@ -141,6 +149,7 @@ $(document).ready(function(){
     $("#animal").val($(this).attr("data-animalid"));
     $("#foodid").val($(this).attr("data-foodid"));
     $("#feedqty").val($(this).attr("data-feedqty"));
+    $("#totalcalories").val($(this).attr("data-totalcalories"));
     $("#start").val($(this).attr("data-start"));
     $("#end").val($(this).attr("data-end"));
    $("#discription").val($(this).attr("data-discription"));
@@ -156,6 +165,7 @@ $(document).ready(function(){
     $("#animalid").val("");
     $("#foodid").val("");
     $("#feedqty").val("");
+    $("#totalcalories").val("");
     $("#start").val("");
     $("#end").val("");
     $("#discription").val("");
