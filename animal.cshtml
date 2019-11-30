@@ -36,8 +36,8 @@ var selectQueryString = "select * from Animal_Page";
 <td>@row.AnimalClassification</td> 
 <td>@row.Breed</td>
 <td>@row.InShelterStatusType</td> 
-<td>@row.DateAdmitted</td> 
-<td>@row.DepartureDate</td> 
+<td>@row.DateAdmitted.ToString("MM/dd/yyyy")</td> 
+<td>@row.DepartureDate.ToString("MM/dd/yyyy")</td> 
 </tr> 
 }
         </tbody>
