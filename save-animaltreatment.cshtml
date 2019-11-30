@@ -1,0 +1,9 @@
+@{Layout = "_Layout.cshtml";}
+
+@{
+var db = Database.Open("my-connection"); 
+db.Execute("insert into AnimalTreatment (AnimalTreatmentID, AnimalID, TreatmentID, StartDate, EndDate, Observations) values (@0, @1, @2, @3, @4, @5)", Request.Form["animaltreatmentid"], Request.Form["animalid"], Request.Form["treatmentid"], Request.Form["startdate"], Request.Form["enddate"], Request.Form["observations"]);
+}
+<div class="alert alert-success">
+  <strong>Success!</strong> Record Saved
+</div>
