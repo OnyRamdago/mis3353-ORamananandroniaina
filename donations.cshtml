@@ -10,12 +10,12 @@ string successMsg = "";
 if (IsPost) {
 switch(Request.Form["SaveType"]) {
 case "Add":
-db.Execute("insert into Donation (DonationID, ShelterID, DonorID, DonationAmount, DonationType) values (@0, @1, @2, @3, @4)", Request.Form["donid"], Request.Form["shelterid"], Request.Form["donorid"], Request.Form["donamt"], Request.Form["dontype"]);
+db.Execute("insert into Donation (DonationID, ShelterID, DonorID, DonationType) values (@0, @1, @2, @3)", Request.Form["donid"], Request.Form["shelterid"], Request.Form["donorid"], Request.Form["dontype"]);
 successMsg = "Donation added.";
 break;
 
 case "Edit":
-db.Execute("update Donation set ShelterID=@1, DonorID=@2, DonationAmount=@3, DonationType=@4 where DonationId=@0", Request.Form["donid"], Request.Form["shelterid"], Request.Form["donorid"], Request.Form["donamt"], Request.Form["dontype"]);
+db.Execute("update Donation set ShelterID=@1, DonorID=@2, DonationType=@3 where DonationId=@0", Request.Form["donid"], Request.Form["shelterid"], Request.Form["donorid"], Request.Form["dontype"]);
 successMsg = "Donation updated.";
 break;
 
@@ -69,10 +69,7 @@ break;
    }
     </select>
   </div>
-   <div class="form-group">
-    <label for="donamt">Donation Amount:</label>
-    <input type="text" class="form-control" id="donamt" name = "donamt">
-  </div>
+   
   <div class="form-group">
     <label for="dontype">Donation Type:</label>
     <input type="text" class="form-control" id="dontype" name = "dontype">
@@ -100,7 +97,6 @@ break;
                 <th>Donation ID</th>
                 <th>Shelter ID</th>
                 <th>Donor ID</th>
-                <th>Donation Amount</th>
                 <th>Donation Type</th>
               <th></th>
               <th></th>
@@ -113,9 +109,8 @@ break;
 <td>@row.DonationID</td> 
 <td>@row.ShelterID</td> 
 <td>@row.DonorID</td> 
-<td>@row.DonationAmount</td>
 <td>@row.DonationType</td> 
-  <td><button type="button" class="btn btn-primary myEdit" data-donid = "@row.DonationID" data-shelterid = "@row.ShelterID" data-donorid = "@row.DonorID" data-donamt = "@row.DonationAmount" data-dontype = "@row.DonationType"><i class="far fa-pencil-alt"></i></button></td>
+  <td><button type="button" class="btn btn-primary myEdit" data-donid = "@row.DonationID" data-shelterid = "@row.ShelterID" data-donorid = "@row.DonorID" data-dontype = "@row.DonationType"><i class="far fa-pencil-alt"></i></button></td>
   <td>
     <form method="post" action="">
       <input type="hidden" name="donid" value="@row.DonationID">
@@ -138,7 +133,7 @@ $(document).ready(function(){
     $("#donid").attr("disabled", "disabled");
     $("#shelterid").val($(this).attr("data-shelterid"));
     $("#donorid").val($(this).attr("data-donorid"));
-    $("#donamt").val($(this).attr("data-donamt"));
+   
     $("#dontype").val($(this).attr("data-dontype"));
    
      $("#myModal").modal({
@@ -153,7 +148,7 @@ $(document).ready(function(){
     $("#donid").val("");
     $("#shelterid").val("");
     $("#donorid").val("");
-    $("#donamt").val("");
+   
     $("#dontype").val("");
       
     $("#SaveType").val("Add");
