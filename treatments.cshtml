@@ -101,7 +101,7 @@ Treatments
   <td><button type="button" class="btn btn-primary myEdit" data-treatid="@row.TreatmentID" data-empid="@row.EmployeeID" data-treattype="@row.TreatmentType" data-treatdesc="@row.TreatmentDescription"><i class="fas fa-pen-square"></i></button></td>
   <td>
     <form method="post" action ="">
-      <input type ="hidden" name="treaid" value="@row.TreatmentID">
+      <input type ="hidden" name="treatid" value="@row.TreatmentID">
       <input type ="hidden"  name = "SaveType" value ="Delete">
       <button type= "submit" class= "btn btn-primary" onclick="return confirm('Are you sure you want to delete this item?');"><i class="far fa-trash-alt"></i></button>
     </form></td>
