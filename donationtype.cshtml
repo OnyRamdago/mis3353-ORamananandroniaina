@@ -16,7 +16,7 @@ db.Execute("update Diet set  DonationTypeName =@1, DonationAmount=@2 where Donat
 successMsg =" DonationType updated.";
 break;
 case "Delete": 
-db.Execute("delete from Diet where DietID=@0", Request.Form["dietid"]);
+db.Execute("delete from Diet where DonationTypeID=@0", Request.Form["donationtypeid"]);
 successMsg =" DonationType deleted.";
 break;
 }
