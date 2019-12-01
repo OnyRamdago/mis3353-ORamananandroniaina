@@ -3,7 +3,7 @@
 var db = Database.Open("my-connection"); 
 var selectQueryString = "select * from Employee_Page"; 
 var shelterList= "select a.*, s.* from animal a join shelter s on s.ShelterID = a.ShelterID";
-var employeeList = "select e.* from employee e join EmployeeType et on s.shelterid = et.shelterid";
+var employeeTypeList = "select e.* from employee e join EmployeeType et on s.shelterid = et.shelterid";
 
 string successMsg = "";
 if (IsPost){
@@ -59,7 +59,7 @@ break;
   <div class="form-group">
     <label for="emptypeid">Employee Type ID:</label>
  <select class = "form-control" id ="emptypeid" name = "emptypeid">
-   @foreach(var emptyperow in db.Query(employeeList))
+   @foreach(var emptyperow in db.Query(employeeTypeList))
    {
    <option value = "@emptyperow.EmployeeTypeID">@emptyperow.EmployeeTypeID</option>
    }
