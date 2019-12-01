@@ -1,0 +1,125 @@
+@{Layout = "_Layout.cshtml";}
+@{
+var db = Database.Open("my-connection"); 
+var selectQueryString = "select * from ServiceType_Page"; 
+string successMsg = "";
+if (IsPost){
+switch (Request.Form["SaveType"])
+{
+
+case "Add": 
+db.Execute("insert into EmployeeType (EmployeeTypeID, EmployeeTypeName) values (@0, @1)", Request.Form["employeetypeid"], Request.Form["etn"]);
+successMsg ="EmployeeType added.";
+break;
+case "Edit": 
+db.Execute("update Diet set  EmployeeTypeName =@1 where EmployeeTypeID = @0", Request.Form["employeetypeid"], Request.Form["etn"]);
+successMsg =" EmployeeType updated.";
+break;
+case "Delete": 
+db.Execute("delete from Diet where EmployeeTypeID=@0", Request.Form["employeetypeid"]);
+successMsg =" EmployeeType deleted.";
+break;
+}
+}
+}
+@if (successMsg != "") {
+<div class="alert alert-success">
+  <strong>Success!</strong> @successMsg
+</div>
+}
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title" id ="modaltitle">Add New EmployeeType</h4>
+        <button type="button" class="close" data-dismiss="modal" id="myClose">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+         <form method="post" action="">
+  <div class="form-group">
+    <label for="employeetypeid">EmployeeType ID:</label>
+    <input type="text" class="form-control" id="employeetypeid" name = "employeetypeid">
+  </div>
+  
+   <div class="form-group">
+    <label for="etn">EmployeeTypeName:</label>
+    <input type="text" class="form-control" id="etn" name = "etn">
+  </div>
+ 
+  
+           <input type = "hidden" name ="SaveType" id = "SaveType" value="Add">
+<button type="submit" class="btn btn-primary">Save</button>
+</form> 
+      </div>
+    </div>
+  </div>
+</div>
+
+<h1>
+    Donation Type
+<!-- Button to Open the Modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  <i class="fas fa-plus-circle"></i>
+</button>
+</h1>
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>EmployeeType ID</th>
+                <th>EmployeeTypeName</th>
+               
+              <th></th>
+               <th></th>
+            </tr>
+        </thead>
+        <tbody>
+@foreach(var row in db.Query(selectQueryString))
+{
+<tr> 
+<td>@row.EmployeeTypeID</td> 
+<td>@row.EmployeeTypeName</td> 
+
+
+  <td><button type="button" class="btn btn-primary myEdit" data-employeetypeid="@row.EmployeeTypeID" data-etn="@row.EmployeeTypeName"><i class="fas fa-pen-square"></i></button></td>
+  <td>
+    <form method="post" action ="">
+      <input type ="hidden" name="employeetypeid" value="@row.EmployeeTypeID">
+      <input type ="hidden"  name = "SaveType" value ="Delete">
+      <button type= "submit" class= "btn btn-primary" onclick="return confirm('Are you sure you want to delete this item?');"><i class="far fa-trash-alt"></i></button>
+    </form></td>
+ </tr> 
+}
+        </tbody>
+    </table>
+</div>
+ <script>
+$(document).ready(function(){
+  
+  $(".myEdit").click(function(){
+    $("#modalTitle").text("Edit Employee");
+    
+    $("#employeetypeid").val($(this).attr("data-employeetypeid"));
+    $("#employeetypeid").attr("disabled", "disabled");
+    $("#etn").val($(this).attr("data-etn"));
+ 
+     $("#myModal").modal({
+       show: true
+     });
+    $("#SaveType").val("Edit");
+  });
+    $("#myClose").click(function(){
+    $("#modalTitle").text("Add New Employee Type");
+      $("#employeetypeid").removeAttr("disabled");
+    $("#employeetypeid").val("");
+    $("#etn").val("");
+ 
+    $("#SaveType").val("Add");
+  });
+});
+</script>
