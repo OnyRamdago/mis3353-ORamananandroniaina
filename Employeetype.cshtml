@@ -12,11 +12,11 @@ db.Execute("insert into EmployeeType (EmployeeTypeID, EmployeeTypeName) values (
 successMsg ="EmployeeType added.";
 break;
 case "Edit": 
-db.Execute("update Diet set  EmployeeTypeName =@1 where EmployeeTypeID = @0", Request.Form["employeetypeid"], Request.Form["etn"]);
+db.Execute("update EmployeeType set  EmployeeTypeName =@1 where EmployeeTypeID = @0", Request.Form["employeetypeid"], Request.Form["etn"]);
 successMsg =" EmployeeType updated.";
 break;
 case "Delete": 
-db.Execute("delete from Diet where EmployeeTypeID=@0", Request.Form["employeetypeid"]);
+db.Execute("delete from EmployeeType where EmployeeTypeID=@0", Request.Form["employeetypeid"]);
 successMsg =" EmployeeType deleted.";
 break;
 }
