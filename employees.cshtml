@@ -3,6 +3,29 @@
 var db = Database.Open("my-connection"); 
 var selectQueryString = "select * from Employee_Page"; 
 var shelterList = "select e.* from employee e join shelter s on s.shelterid = e.shelterid";
+string successMsg = "";
+if (IsPost){
+switch (Request.Form["SaveType"])
+{
+case "Add": 
+db.Execute("insert into Donor (DonorID, LastName, FirstName, StreetAddress, City, State, ZipCode, CellPhone) values (@0, @1, @2, @3, @4, @5, @6, @7)", Request.Form["donorid"], Request.Form["lastname"], Request.Form["firstname"], Request.Form["streetaddress"], Request.Form["city"], Request.Form["state"], Request.Form["zipcode"], Request.Form["pnum"]);
+successMsg =" Donor added.";
+break;
+case "Edit": 
+db.Execute("update Donor set  LastName=@2, FirstName=@3, StreetAddress=@4, City=@5, State=@6, CellPhone=@7 where DonorID = @0", Request.Form["lastname"], Request.Form["firstname"], Request.Form["streetaddress"], Request.Form["city"], Request.Form["state"], Request.Form["zipcode"], Request.Form["pnum"]);
+successMsg =" Diet updated.";
+break;
+case "Delete": 
+db.Execute("delete from Donor where DonorID=@0", Request.Form["donorid"]);
+successMsg =" Donor deleted.";
+break;
+}
+}
+}
+@if (successMsg != "") {
+<div class="alert alert-success">
+  <strong>Success!</strong> @successMsg
+</div>
 }
 <!-- The Modal -->
 <div class="modal" id="myModal">
