@@ -1,9 +1,0 @@
-@{Layout = "_Layout.cshtml";}
-
-@{
-var db = Database.Open("my-connection"); 
-db.Execute("insert into Diet (DietID, AnimalID, FoodID, FeedingAmount,TotalCalories, DietStart, DietEnd, Description) values (@0, @1, @2, @3, @4, @5, @6, @7)", Request.Form["dietid"], Request.Form["animalid"], Request.Form["foodid"], Request.Form["feedqty"], Request.Form["totalcalories"], Request.Form["start"], Request.Form["end"], Request.Form["description"]);
-}
-<div class="alert alert-success">
-  <strong>Success!</strong> Record Saved
-</div>
