@@ -12,11 +12,11 @@ db.Execute("insert into ServiceType (ServiceTypeID, ServiceName) values (@0, @1)
 successMsg ="ServiceType added.";
 break;
 case "Edit": 
-db.Execute("update Diet set  ServiceName =@1 where ServiceTypeID = @0", Request.Form["servicetypeid"], Request.Form["stn"]);
+db.Execute("update ServiceTypeset  ServiceName =@1 where ServiceTypeID = @0", Request.Form["servicetypeid"], Request.Form["stn"]);
 successMsg =" ServiceType updated.";
 break;
 case "Delete": 
-db.Execute("delete from Diet where ServiceTypeID=@0", Request.Form["servicetypeid"]);
+db.Execute("delete from ServiceType where ServiceTypeID=@0", Request.Form["servicetypeid"]);
 successMsg =" ServiceType deleted.";
 break;
 }
