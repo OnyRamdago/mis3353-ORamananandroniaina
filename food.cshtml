@@ -2,12 +2,6 @@
 @{
 var db = Database.Open("my-connection"); 
 var selectQueryString = "select * from Food_Page"; 
-}
-
-@{Layout = "_Layout.cshtml";}
-@{
-var db = Database.Open("my-connection"); 
-var selectQueryString = "select * from Food_Page"; 
 string successMsg = "";
 if (IsPost){
 switch (Request.Form["SaveType"])
