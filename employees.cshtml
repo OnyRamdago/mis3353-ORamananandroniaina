@@ -3,7 +3,7 @@
 var db = Database.Open("my-connection"); 
 var selectQueryString = "select * from Employee_Page"; 
 var shelterList= "select a.*, s.* from animal a join shelter s on s.ShelterID = a.ShelterID";
-var employeeTypeList = "select e.* from employee e join EmployeeType et on s.shelterid = et.shelterid";
+var employeeTypeList = "select e.* from employee e join EmployeeType et on s.employeetypeid = et.employeetypeid";
 
 string successMsg = "";
 if (IsPost){
