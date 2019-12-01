@@ -17,7 +17,7 @@ db.Execute("update Treatment set  EmployeeID=@1, TreatmentType=@2, TreatmentDesc
 successMsg =" Treatment updated.";
 break;
 case "Delete": 
-db.Execute("delete from EmployeeTask where TreatmentID=@0", Request.Form["treatid"]);
+db.Execute("delete from Treatment where TreatmentID=@0", Request.Form["treatid"]);
 successMsg =" Treatment deleted.";
 break;
 }
