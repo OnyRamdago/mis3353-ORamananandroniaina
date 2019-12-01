@@ -117,7 +117,7 @@ break;
 <td><button type="button" class="btn btn-primary myEdit" data-donorid="@row.DonorID" data-lastname="@row.LastName" data-firstName="@row.FirstName" data-streetaddress="@row.StreetAddress" data-city="@row.City" data-state="@row.State" data-zipcode="@row.ZipCode" data-pnum="@row.CellPhone"><i class="fas fa-pen-square"></i></button></td>
 <td>
     <form method="post" action ="">
-      <input type ="hidden" name="dietid" value="@row.DietID">
+      <input type ="hidden" name="donorid" value="@row.donorid">
       <input type ="hidden"  name = "SaveType" value ="Delete">
       <button type= "submit" class= "btn btn-primary" onclick="return confirm('Are you sure you want to delete this item?');"><i class="far fa-trash-alt"></i></button>
     </form></td>
