@@ -2,10 +2,10 @@
 @{
 var db = Database.Open("my-connection"); 
 var selectQueryString = "select * from Animal_Page order by AnimalID"; 
-var shelterList= "select a.* from animal a join shelter s on s.ShelterID = a.ShelterID";
-var genderList = "select a.* from animal a join animalgender g on a.animalgenderid = g.animalgenderid";
-var typeList = "select a.* from animal a join animaltype t on a.animaltypeid = t.animaltypeid";
-var statusList = "select a.* from animal a join inshelterstatus iss on iss.inshelterstatusid = a.inshelterstatusid";
+var shelterList= "select a.*, s.* from animal a join shelter s on s.ShelterID = a.ShelterID";
+var genderList = "select a.*,g.* from animal a join animalgender g on a.animalgenderid = g.animalgenderid";
+var typeList = "select a.*,t.* from animal a join animaltype t on a.animaltypeid = t.animaltypeid";
+var statusList = "select a.*,iss.* from animal a join inshelterstatus iss on iss.inshelterstatusid = a.inshelterstatusid";
 
 string successMsg = "";
 if (IsPost){
@@ -56,7 +56,7 @@ break;
  <select class = "form-control" id ="shelterid" name = "shelterid">
    @foreach(var shelterrow in db.Query(shelterList))
    {
-   <option value = "@shelterrow.ShelterID">@shelterrow.ShelterID</option>
+   <option value = "@shelterrow.ShelterID">@shelterrow.ShelterID - @shelterrow.ShelterName</option>
    }
     </select>
   </div>
