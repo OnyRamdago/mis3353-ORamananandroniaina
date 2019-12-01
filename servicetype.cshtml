@@ -8,11 +8,11 @@ switch (Request.Form["SaveType"])
 {
 
 case "Add": 
-db.Execute("insert into ServiceType (ServiceTypeID, ServiceTypeName) values (@0, @1)", Request.Form["servicetypeid"], Request.Form["stn"]);
+db.Execute("insert into ServiceType (ServiceTypeID, ServiceName) values (@0, @1)", Request.Form["servicetypeid"], Request.Form["stn"]);
 successMsg ="ServiceType added.";
 break;
 case "Edit": 
-db.Execute("update Diet set  ServiceTypeName =@1 where ServiceTypeID = @0", Request.Form["servicetypeid"], Request.Form["stn"]);
+db.Execute("update Diet set  ServiceName =@1 where ServiceTypeID = @0", Request.Form["servicetypeid"], Request.Form["stn"]);
 successMsg =" ServiceType updated.";
 break;
 case "Delete": 
@@ -47,7 +47,7 @@ break;
   </div>
   
    <div class="form-group">
-    <label for="stn">ServiceTypeName:</label>
+    <label for="stn">ServiceName:</label>
     <input type="text" class="form-control" id="stn" name = "stn">
   </div>
  
@@ -72,7 +72,7 @@ break;
         <thead>
             <tr>
                 <th>ServiceType ID</th>
-                <th>ServiceTypeName</th>
+                <th>ServiceName</th>
                
               <th></th>
                <th></th>
@@ -86,7 +86,7 @@ break;
 <td>@row.ServiceTypeName</td> 
 
 
-  <td><button type="button" class="btn btn-primary myEdit" data-servicetypeid="@row.ServiceTypeID" data-stn="@row.ServiceTypeName"><i class="fas fa-pen-square"></i></button></td>
+  <td><button type="button" class="btn btn-primary myEdit" data-servicetypeid="@row.ServiceTypeID" data-stn="@row.ServiceName"><i class="fas fa-pen-square"></i></button></td>
   <td>
     <form method="post" action ="">
       <input type ="hidden" name="servicetypeid" value="@row.ServiceTypeID">
