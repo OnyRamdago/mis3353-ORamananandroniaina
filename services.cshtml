@@ -57,7 +57,7 @@ break;
  <select class = "form-control" id ="animid" name = "animid">
    @foreach(var animalrow in db.Query(animalList))
    {
-   <option value = "@animalrow.AnimalID">@animalrow.AnimalID - @animalrow.AnimalClassification</option>
+   <option value = "@animalrow.AnimalID">@animalrow.AnimalClassification</option>
    }
     </select>
   </div>
@@ -66,7 +66,7 @@ break;
  <select class = "form-control" id ="servtypeid" name = "servtypeid">
    @foreach(var servicerow in db.Query(serviceList))
    {
-   <option value = "@servicerow.ServiceTypeID">@servicerow.ServiceTypeID</option>
+   <option value = "@servicerow.ServiceTypeID">@servicerow.ServiceName</option>
    }
     </select>
   </div>
@@ -76,7 +76,7 @@ break;
  <select class = "form-control" id ="clientid" name = "clientid">
    @foreach(var clientrow in db.Query(clientList))
    {
-   <option value = "@clientrow.ClientID">@clientrow.ClientID</option>
+   <option value = "@clientrow.ClientID">@clientrow.ClientName</option>
    }
     </select>
   </div>
