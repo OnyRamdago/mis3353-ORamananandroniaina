@@ -12,7 +12,7 @@ db.Execute("insert into Food (FoodID, FoodName, Stock, Calories) values (@0, @1,
 successMsg =" Food added.";
 break;
 case "Edit": 
-db.Execute("update Food set  FoodName =@1, Stock=@2, Calories=@3 where foodid = @0", Request.Form["dietid"], Request.Form["fname"], Request.Form["stock"], Request.Form["cal"]);
+db.Execute("update Food set  FoodName =@1, Stock=@2, Calories=@3 where FoodID = @0", Request.Form["dietid"], Request.Form["fname"], Request.Form["stock"], Request.Form["cal"]);
 successMsg =" Food updated.";
 break;
 case "Delete": 
