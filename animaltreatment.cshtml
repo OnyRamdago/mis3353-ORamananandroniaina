@@ -44,7 +44,7 @@ break;
       <div class="modal-body">
          <form method="post" action="">
   <div class="form-group">
-    <label for="animaltreatmentid">Animal Treatment:</label>
+    <label for="animaltreatmentid">AnimalTreatment ID:</label>
     <input type="text" class="form-control" id="animaltreatmentid" name = "animaltreatmentid">
   </div>
   <div class="form-group">
@@ -96,7 +96,7 @@ break;
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>Animal Treatment ID</th>
+                <th>AnimalTreatment ID</th>
                 <th>Animal ID</th>
                 <th>Treatment ID</th>
                 <th>Start Date</th>
@@ -114,8 +114,6 @@ break;
 <td>@row.AnimalTreatmentID</td> 
 <td>@row.AnimalID</td> 
 <td>@row.TreatmentID</td> 
-<td>@row.StartDate</td>
-  <td>@row.EndDate</td>
 <td>@row.StartDate.ToString("MM/dd/yyyy")</td> 
 <td>@row.EndDate.ToString("MM/dd/yyyy")</td> 
     <td>@row.Observations</td>
