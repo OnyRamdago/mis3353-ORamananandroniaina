@@ -165,7 +165,7 @@ break;
 <td><button type="button" class="btn btn-primary myEdit" data-empid="@row.EmployeeID" data-shelterid="@row.ShelterID" data-emptypeid = "@row.EmployeeTypeID" data-dept="@row.Department" data-dob="@row.DOB" data-salary="@row.Salary" data-firstName="@row.FirstName" data-lastname="@row.LastName"  data-streetaddress="@row.EmployeeStreetAddress" data-city="@row.EmployeeCity" data-state="@row.EmployeeState" data-zipcode="@row.ZipCode" data-emphone="@row.EmployeePhone"><i class="fas fa-pen-square"></i></button></td>
 <td>
     <form method="post" action ="">
-      <input type ="hidden" name="empid" value="@row.empid">
+      <input type ="hidden" name="empid" value="@row.EmployeeID">
       <input type ="hidden"  name = "SaveType" value ="Delete">
       <button type= "submit" class= "btn btn-primary" onclick="return confirm('Are you sure you want to delete this item?');"><i class="far fa-trash-alt"></i></button>
     </form></td>
