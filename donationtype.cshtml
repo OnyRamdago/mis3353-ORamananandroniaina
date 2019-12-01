@@ -12,11 +12,11 @@ db.Execute("insert into DonationType (DonationTypeID, DonationTypeName, Donation
 successMsg ="DonationType added.";
 break;
 case "Edit": 
-db.Execute("update Diet set  DonationTypeName =@1, DonationAmount=@2 where DonationTypeID = @0", Request.Form["donationtypeid"], Request.Form["dtn"], Request.Form["damt"]);
+db.Execute("update DonationType set  DonationTypeName =@1, DonationAmount=@2 where DonationTypeID = @0", Request.Form["donationtypeid"], Request.Form["dtn"], Request.Form["damt"]);
 successMsg =" DonationType updated.";
 break;
 case "Delete": 
-db.Execute("delete from Diet where DonationTypeID=@0", Request.Form["donationtypeid"]);
+db.Execute("delete from DonationType where DonationTypeID=@0", Request.Form["donationtypeid"]);
 successMsg =" DonationType deleted.";
 break;
 }
@@ -106,7 +106,7 @@ break;
 $(document).ready(function(){
   
   $(".myEdit").click(function(){
-    $("#modalTitle").text("Edit Diet");
+    $("#modalTitle").text("Edit Donation Type");
     
     $("#donationtypeid").val($(this).attr("data-donationtypeid"));
     $("#donationtypeid").attr("disabled", "disabled");
