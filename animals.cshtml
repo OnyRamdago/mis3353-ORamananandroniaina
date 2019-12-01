@@ -3,6 +3,34 @@
 var db = Database.Open("my-connection"); 
 var selectQueryString = "select * from Animal_Page order by AnimalID"; 
 var shelterList= "select a.* from animal a join shelter s on s.ShelterID = a.ShelterID";
+var genderList = "select a.* from animal a join animalgender g on a.animalgenderid = g.animalgenderid";
+var typeList = "select a.* from animal a join animaltype t on a.animaltypeid = t.animaltypeid";
+var statusList = "select a.* from animal a join inshelterstatus iss on iss.inshelterstatusid = a.inshelterstatusid";
+
+string successMsg = "";
+if (IsPost){
+switch (Request.Form["SaveType"])
+{
+
+case "Add": 
+ db.Execute("insert into Animal (AnimalID, ShelterID, AnimalName, AnimalTypeID, AnimalGenderID, DateOfBirth,InShelterStatusID) values (@0, @1, @2, @3, @4, @5, @6)", Request.Form["animalid"], Request.Form["shelterid"], Request.Form["animalname"], Request.Form["animaltype"], Request.Form["gender"], Request.Form["dob"], Request.Form["status"]);
+successMsg =" Animal added.";
+break;
+case "Edit": 
+db.Execute("update Animal set  ShelterID=@1, AnimalName=@2, AnimalTypeID=@3, AnimalGenderID=@4, DateOfBirth=@5, InShelterStatus=@6 where AnimalID = @0", Request.Form["shelterid"], Request.Form["animalname"], Request.Form["animaltype"], Request.Form["gender"], Request.Form["dob"], Request.Form["status"]);
+successMsg =" Animal updated.";
+break;
+case "Delete": 
+db.Execute("delete from Animal where AnimalID=@0", Request.Form["animalid"]);
+successMsg =" Animal deleted.";
+break;
+}
+}
+}
+@if (successMsg != "") {
+<div class="alert alert-success">
+  <strong>Success!</strong> @successMsg
+</div>
 }
 
 <!-- The Modal -->
@@ -13,12 +41,12 @@ var shelterList= "select a.* from animal a join shelter s on s.ShelterID = a.She
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title" id = "modalTitle">Add New Animal</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" id ="myClose">&times;</button>
       </div>
 
       <!-- Modal body -->
       <div class="modal-body">
-         <form method="post" action="save-animal">
+         <form method="post" action="">
   <div class="form-group">
     <label for="animalid">Animal ID:</label>
     <input type="text" class="form-control" id="animalid" name = "animalid">
@@ -37,28 +65,34 @@ var shelterList= "select a.* from animal a join shelter s on s.ShelterID = a.She
     <input type="text" class="form-control" id="animalname" name = "animalname">
   </div>
    <div class="form-group">
-    <label for="animaltype">Animal Type:</label>
-    <input type="text" class="form-control" id="animaltype" name = "animaltype">
-  </div>
+    <label for="animaltype">Animal Type ID:</label>
+<select class = "form-control" id ="animaltype" name = "animaltype">
+   @foreach(var typerow in db.Query(typeList))
+   {
+   <option value = "@typerow.AnimalTypeID">@typerow.AnimalTypeID</option>
+   }
+    </select>  </div>
   <div class="form-group">
-    <label for="gender">Gender:</label>
-    <input type="text" class="form-control" id="gender" name = "gender">
-  </div>
+    <label for="gender">Gender ID:</label>
+<select class = "form-control" id ="gender" name = "gender">
+   @foreach(var genderrow in db.Query(genderList))
+   {
+   <option value = "@genderrow.AnimalGenderID">@genderrow.AnimalGenderID - @genderrow.GenderType</option>
+   }
+    </select>  
+   </div>
     <div class="form-group">
     <label for="dob">Date of Birth:</label>
     <input type="text" class="form-control" id="dob" name = "dob">
   </div>
-  <div class="form-group">
-    <label for="admitdate">Date Admitted:</label>
-    <input type="text" class="form-control" id="admitdate" name = "admitdate">
-  </div>
     <div class="form-group">
-    <label for="depdate">Departure Date:</label>
-    <input type="text" class="form-control" id="depdate" name = "depdate">
-  </div>
-    <div class="form-group">
-    <label for="status">In-Shelter Status:</label>
-    <input type="text" class="form-control" id="status" name = "status">
+    <label for="status">In-Shelter Status ID:</label>
+<select class = "form-control" id ="status" name = "status">
+   @foreach(var statusrow in db.Query(statusList))
+   {
+   <option value = "@statusrow.InShelterStatusType">@statusrow.InShelterStatusID - @statusrow.InshelterStatusType</option>
+   }
+    </select>
   </div>
 <button type="submit" class="btn btn-primary">Save</button>
 </form> 
@@ -70,8 +104,7 @@ var shelterList= "select a.* from animal a join shelter s on s.ShelterID = a.She
 <h1>
     Animals
 <!-- Button to Open the Modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-  +
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fas fa-plus-circle"></i>
 </button>
 </h1>
 <div class="table-responsive">
@@ -81,34 +114,33 @@ var shelterList= "select a.* from animal a join shelter s on s.ShelterID = a.She
                 <th>Animal ID</th>
                 <th>Shelter ID</th>
                 <th>Animal Name</th>
-                <th>Animal Type</th>
-                <th>Gender</th>
+                <th>Animal Type ID</th>
+                <th>Gender ID</th>
                 <th>Date of Birth</th>
-                <th>Date Admitted</th>
-                <th>InShelter Status</th>
-                <th>Departure Date</th>
+                <th>InShelter Status ID</th>
+              <th></th>
               <th></th>
             </tr>
         </thead>
         <tbody>
 @foreach(var row in db.Query(selectQueryString))
 {
-          string departDisplay = "";
-          if (row.DepartureDate.ToString("MM/dd/yyyy") != "01/01/0001")
-          {
-          departDisplay = row.DepartureDate.ToString("MM/dd/yyyy");
-          }
 <tr> 
 <td>@row.AnimalID</td> 
 <td>@row.ShelterID</td> 
 <td>@row.AnimalName</td> 
-<td>@row.AnimalType</td>
-<td>@row.Gender</td> 
-<td>@row.DateOfBirth.ToString("MM/dd/yyyy")</td> 
-<td>@row.DateAdmitted.ToString("MM/dd/yyyy")</td>
-<td>@row.InShelterStatus</td> 
+<td>@row.AnimalTypeID</td>
+<td>@row.AnimalGenderID</td> 
+<td>@row.DateOfBirth.ToString("MM/dd/yyyy")</td>
+<td>@row.InShelterStatusID</td> 
 <td>@departDisplay</td>
-  <td><button type="button" class="btn btn-primary myEdit" data-animalid = "@row.AnimalID" data-shelterid = "@row.ShelterID" data-animalname = "@row.AnimalName" data-animalType = "@row.AnimalType" data-gender = "@row.Gender" data-dob = "@row.DateOfBirth" data-admitdate = "@row.DateAdmitted" data-depdate = "@row.DepartureDate" data-status = "@row.InShelterStatus" >Edit</button></td>
+  <td><button type="button" class="btn btn-primary myEdit" data-animalid = "@row.AnimalID" data-shelterid = "@row.ShelterID" data-animalname = "@row.AnimalName" data-animalType = "@row.AnimalType" data-gender = "@row.AnimalGenderID" data-dob = "@row.DateOfBirth"  data-status = "@row.InShelterStatusID"><i class="fas fa-pen-square"></i></button></td>
+<td>
+    <form method="post" action ="">
+      <input type ="hidden" name="animalid" value="@row.AnimalID">
+      <input type ="hidden"  name = "SaveType" value ="Delete">
+      <button type= "submit" class= "btn btn-primary" onclick="return confirm('Are you sure you want to delete this item?');"><i class="far fa-trash-alt"></i></button>
+</form></td>
 </tr> 
 }
         </tbody>
@@ -126,13 +158,25 @@ var shelterList= "select a.* from animal a join shelter s on s.ShelterID = a.She
   $("#animaltype").val(this.getAttribute("data-animaltype"));
   $("#gender").val(this.getAttribute("data-gender"));
   $("#dob").val(this.getAttribute("data-dob"));
-  $("#depdate").val(this.getAttribute("data-depdate"));
-  $("#admitdate").val(this.getAttribute("data-admitdate"));
   $("#status").val(this.getAttribute("data-status"));
                      
   $("#myModal").modal({
              show: true
-             });
+    });
+  $("#SaveType").val("Edit");
 });
-});
+    $("#myClose").click(function(){
+    $("#modalTitle").text("Add New Diet");
+    $("#animalid").removeAttr("disabled");});
+    
+  $("#animalid").val("data-animalid");
+  $("#shelterid").val("data-shelterid");
+  $("#animalname").val("data-animalname");
+  $("#animaltype").val("data-animaltype");
+  $("#gender").val("data-gender");
+  $("#dob").val("data-dob");
+  $("#status").val("data-status");
+        $("#SaveType").val("Add");
+  });
+  });
 </script>
