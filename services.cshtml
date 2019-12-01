@@ -1,7 +1,7 @@
 @{Layout = "_Layout.cshtml";}
 @{
 var db = Database.Open("my-connection"); 
-var selectQueryString = "select * from Service_Page order by ServiceID"; 
+var selectQueryString = "select * from Service_Page"; 
 var animalList= "select A.AnimalID, AnimalClassification from Animal A JOIN AnimalType AT ON A.AnimalTypeID=AT.AnimalTypeID ORDER BY A.AnimalID";
 var serviceList = "select * from ServiceType";
 var clientList = "select * from Client";
