@@ -11,11 +11,11 @@ switch (Request.Form["SaveType"])
 {
 case "Add": 
 db.Execute("insert into Employee (EmployeeID, ShelterID, EmployeeTypeID, FirstName, LastName, Department, DOB, Salary,EmployeeStreetAddress, EmployeeCity, EmployeeState, ZipCode, StartDate, EmployeePhone) values (@0, @1, @2, @3, @4, @5, @6, @7, @8, @9, @10, @11, @12, @13)", Request.Form["empid"], Request.Form["shelterid"], Request.Form["emptypeid"], Request.Form["firstname"], Request.Form["lastname"], Request.Form["dept"], Request.Form["dob"], Request.Form["salary"], Request.Form["streetaddress"], Request.Form["city"], Request.Form["state"], Request.Form["zipcode"], Request.Form["start"],Request.Form["emphone"]);
-successMsg =" Donor added.";
+successMsg =" Employee added.";
 break;
 case "Edit": 
-db.Execute("update Employee set  ShelterID=@1, EmployeeTypeID=@2, FirstName=@3, LastName=@4, Department=@5, DOB=@6, Salary=@7, EmployeeStreetAddress=@8, EmployeeCity=@9, EmployeeState=@10, ZipCode=@11, StartDate=@12, EmployeePhone=@13 where EmployeeID = @0", Request.Form["shelterid"], Request.Form["emptypeid"], Request.Form["firstname"], Request.Form["lastname"], Request.Form["dept"], Request.Form["dob"], Request.Form["salary"], Request.Form["streetaddress"], Request.Form["city"] Request.Form["state"], Request.Form["zipcode"], Request.Form["start"],Request.Form["emphone"]);
-successMsg =" Diet updated.";
+db.Execute("update Employee set  ShelterID=@1, EmployeeTypeID=@2, FirstName=@3, LastName=@4, Department=@5, DOB=@6, Salary=@7, EmployeeStreetAddress=@8, EmployeeCity=@9, EmployeeState=@10, ZipCode=@11, StartDate=@12, EmployeePhone=@13 where EmployeeID = @0", Request.Form["shelterid"], Request.Form["emptypeid"], Request.Form["firstname"], Request.Form["lastname"], Request.Form["dept"], Request.Form["dob"], Request.Form["salary"], Request.Form["streetaddress"], Request.Form["city"], Request.Form["state"], Request.Form["zipcode"], Request.Form["start"],Request.Form["emphone"]);
+successMsg =" Employee updated.";
 break;
 case "Delete": 
 db.Execute("delete from Employee where EmployeeID=@0", Request.Form["empid"]);
