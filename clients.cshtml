@@ -136,6 +136,7 @@ $(document).ready(function(){
     $("#modalTitle").text("Edit Client");
     
     $("#clientid").val($(this).attr("data-clientid"));
+    $("#clientid").attr("disabled", "disabled");
     $("#firstname").val($(this).attr("data-firstname"));
     $("#lastname").val($(this).attr("data-lastname"));
     $("#streetaddress").val($(this).attr("data-streetaddress"));
@@ -151,7 +152,8 @@ $(document).ready(function(){
   });
     $("#myClose").click(function(){
     $("#modalTitle").text("Add New Client");
-    
+    $("#clientid").removeAttr("disabled");});
+  
     $("#clientid").val("");
     $("#firstname").val("");
     $("#lastname").val("");
