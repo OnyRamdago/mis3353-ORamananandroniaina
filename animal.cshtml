@@ -40,7 +40,7 @@ var statusList = "select a.* from animal a join inshelterstatus iss on iss.inshe
  <select class = "form-control" id ="gender" name = "gender">
    @foreach(var genderrow in db.Query(genderList))
    {
-   <option value = "@genderrow.GenderType">@genderrow.AnimalGenderID - @genderrow.GenderType</option>
+   <option value = "@genderrow.AnimalGenderID">@genderrow.AnimalGenderID - @genderrow.GenderType</option>
    }
     </select>
   </div>
@@ -49,7 +49,7 @@ var statusList = "select a.* from animal a join inshelterstatus iss on iss.inshe
  <select class = "form-control" id ="type" name = "type">
    @foreach(var typerow in db.Query(typeList))
    {
-   <option value = "@typerow.AnimalClassification">@typerow.AnimalTypeID - @typerow.AnimalClassification</option>
+   <option value = "@typerow.AnimalTypeID">@typerow.AnimalTypeID - @typerow.AnimalClassification</option>
    }
     </select>
   </div>   
