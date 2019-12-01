@@ -54,7 +54,7 @@ break;
     <div class="form-group">
     <label for="shelterList">Shelter ID:</label>
  <select class = "form-control" id ="shelterid" name = "shelterid">
-   @foreach(var animalrow in db.Query(shelterList))
+   @foreach(var shelterrow in db.Query(shelterList))
    {
    <option value = "@shelterrow.ShelterID">@shelterrow.ShelterID</option>
    }
