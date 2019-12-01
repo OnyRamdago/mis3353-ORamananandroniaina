@@ -4,18 +4,19 @@ var db = Database.Open("my-connection");
 var selectQueryString = "select * from Donation_Page"; 
 var shelterList= "select * from Shelter";
 var donorList = "select * from Donor";
+var donorList = "select * from DonationType";
 
 string successMsg = "";
 
 if (IsPost) {
 switch(Request.Form["SaveType"]) {
 case "Add":
-db.Execute("insert into Donation (DonationID, ShelterID, DonorID, DonationType) values (@0, @1, @2, @3)", Request.Form["donid"], Request.Form["shelterid"], Request.Form["donorid"], Request.Form["dontype"]);
+db.Execute("insert into Donation (DonationID, ShelterID, DonorID, DonationTypeID) values (@0, @1, @2, @3)", Request.Form["donid"], Request.Form["shelterid"], Request.Form["donorid"], Request.Form["dontypeid"]);
 successMsg = "Donation added.";
 break;
 
 case "Edit":
-db.Execute("update Donation set ShelterID=@1, DonorID=@2, DonationType=@3 where DonationId=@0", Request.Form["donid"], Request.Form["shelterid"], Request.Form["donorid"], Request.Form["dontype"]);
+db.Execute("update Donation set ShelterID=@1, DonorID=@2, DonationTypeID=@3 where DonationId=@0", Request.Form["donid"], Request.Form["shelterid"], Request.Form["donorid"], Request.Form["dontypeid"]);
 successMsg = "Donation updated.";
 break;
 
@@ -70,10 +71,17 @@ break;
     </select>
   </div>
    
-  <div class="form-group">
-    <label for="dontype">Donation Type:</label>
-    <input type="text" class="form-control" id="dontype" name = "dontype">
+   <div class="form-group">
+    <label for="dontypeid">DonationType ID:</label>
+ <select class = "form-control" id ="dontypeid" name = "dontypeid">
+   @foreach(var dontyperow in db.Query(donationtypeList))
+   {
+   <option value = "@dontype.DonationTypeID">@dontyperow.DonationTypeID</option>
+   }
+    </select>
   </div>
+           
+ 
     <input type="hidden" name="SaveType" id="SaveType" value="Add">
 <button type="submit" class="btn btn-primary">Save</button>
 </form> 
@@ -97,7 +105,7 @@ break;
                 <th>Donation ID</th>
                 <th>Shelter ID</th>
                 <th>Donor ID</th>
-                <th>Donation Type</th>
+                <th>DonationType ID</th>
               <th></th>
               <th></th>
             </tr>
@@ -109,8 +117,8 @@ break;
 <td>@row.DonationID</td> 
 <td>@row.ShelterID</td> 
 <td>@row.DonorID</td> 
-<td>@row.DonationType</td> 
-  <td><button type="button" class="btn btn-primary myEdit" data-donid = "@row.DonationID" data-shelterid = "@row.ShelterID" data-donorid = "@row.DonorID" data-dontype = "@row.DonationType"><i class="far fa-pencil-alt"></i></button></td>
+<td>@row.DonationTypeID</td> 
+  <td><button type="button" class="btn btn-primary myEdit" data-donid = "@row.DonationID" data-shelterid = "@row.ShelterID" data-donorid = "@row.DonorID" data-dontype = "@row.DonationTypeID"><i class="far fa-pencil-alt"></i></button></td>
   <td>
     <form method="post" action="">
       <input type="hidden" name="donid" value="@row.DonationID">
@@ -134,7 +142,7 @@ $(document).ready(function(){
     $("#shelterid").val($(this).attr("data-shelterid"));
     $("#donorid").val($(this).attr("data-donorid"));
    
-    $("#dontype").val($(this).attr("data-dontype"));
+    $("#dontypeid").val($(this).attr("data-dontypeid"));
    
      $("#myModal").modal({
        show: true
@@ -149,7 +157,7 @@ $(document).ready(function(){
     $("#shelterid").val("");
     $("#donorid").val("");
    
-    $("#dontype").val("");
+    $("#dontypeid").val("");
       
     $("#SaveType").val("Add");
   });
