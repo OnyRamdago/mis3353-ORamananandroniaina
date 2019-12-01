@@ -14,11 +14,11 @@ db.Execute("insert into Shift (ShiftID, ShelterID, VolunteerID, ShiftDate, WorkD
 successMsg =" Shift added.";
 break;
 case "Edit": 
-db.Execute("update Diet set  ShelterID =@1, VolunteerID=@2, ShiftDate=@3, WorkDone=@4 where ShiftID = @0", Request.Form["shiftid"], Request.Form["shelterid"], Request.Form["volunteerid"], Request.Form["sd"], Request.Form["wd"]);
+db.Execute("update Shift set  ShelterID =@1, VolunteerID=@2, ShiftDate=@3, WorkDone=@4 where ShiftID = @0", Request.Form["shiftid"], Request.Form["shelterid"], Request.Form["volunteerid"], Request.Form["sd"], Request.Form["wd"]);
 successMsg =" Shift updated.";
 break;
 case "Delete": 
-db.Execute("delete from Diet where ShiftID=@0", Request.Form["shiftid"]);
+db.Execute("delete from Shift where ShiftID=@0", Request.Form["shiftid"]);
 successMsg =" Shift deleted.";
 break;
 }
