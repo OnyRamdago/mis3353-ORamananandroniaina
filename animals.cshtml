@@ -133,7 +133,7 @@ break;
 <td>@row.AnimalGenderID</td> 
 <td>@row.DateOfBirth.ToString("MM/dd/yyyy")</td>
 <td>@row.InShelterStatusID</td> 
-  <td><button type="button" class="btn btn-primary myEdit" data-animalid = "@row.AnimalID" data-shelterid = "@row.ShelterID" data-animalname = "@row.AnimalName" data-animalType = "@row.AnimalType" data-gender = "@row.AnimalGenderID" data-dob = "@row.DateOfBirth"  data-status = "@row.InShelterStatusID"><i class="fas fa-pen-square"></i></button></td>
+  <td><button type="button" class="btn btn-primary myEdit" data-animalid = "@row.AnimalID" data-shelterid = "@row.ShelterID" data-animalname = "@row.AnimalName" data-animalType = "@row.AnimalTypeID" data-gender = "@row.AnimalGenderID" data-dob = "@row.DateOfBirth"  data-status = "@row.InShelterStatusID"><i class="fas fa-pen-square"></i></button></td>
 <td>
     <form method="post" action ="">
       <input type ="hidden" name="animalid" value="@row.AnimalID">
