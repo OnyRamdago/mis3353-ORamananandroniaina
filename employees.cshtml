@@ -10,7 +10,7 @@ if (IsPost){
 switch (Request.Form["SaveType"])
 {
 case "Add": 
-db.Execute("insert into Employee (EmployeeID, ShelterID, EmployeeTypeID, FirstName, LastName, Department, DOB, Salary,EmployeeStreetAddress, EmployeeCity, EmployeeState, ZipCode, StartDate, EmployeePhone) values (@0, @1, @2, @3, @4, @5, @6, @7, @8, @9, @10, @11, @12, @13)", Request.Form["empid"], Request.Form["shelterid"], Request.Form["emptypeid"], Request.Form["firstname"], Request.Form["lastname"], Request.Form["dept"], Request.Form["dob"], Request.Form["salary"], Request.Form["streetaddress"], Request.Form["city"] Request.Form["state"], Request.Form["zipcode"], Request.Form["start"],Request.Form["emphone"]);
+db.Execute("insert into Employee (EmployeeID, ShelterID, EmployeeTypeID, FirstName, LastName, Department, DOB, Salary,EmployeeStreetAddress, EmployeeCity, EmployeeState, ZipCode, StartDate, EmployeePhone) values (@0, @1, @2, @3, @4, @5, @6, @7, @8, @9, @10, @11, @12, @13)", Request.Form["empid"], Request.Form["shelterid"], Request.Form["emptypeid"], Request.Form["firstname"], Request.Form["lastname"], Request.Form["dept"], Request.Form["dob"], Request.Form["salary"], Request.Form["streetaddress"], Request.Form["city"], Request.Form["state"], Request.Form["zipcode"], Request.Form["start"],Request.Form["emphone"]);
 successMsg =" Donor added.";
 break;
 case "Edit": 
