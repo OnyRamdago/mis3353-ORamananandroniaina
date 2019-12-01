@@ -123,7 +123,7 @@ break;
 <td>@row.ShiftDate.ToString("MM/dd/yyyy")</td>
   <td>@row.WorkDone</td>
   
-  <td><button type="button" class="btn btn-primary myEdit" data-shiftid="@row.ShiftID" data-shelterid="@row.ShelterlID" data-volunteerid="@row.VolunteerID" data-sd="@row.ShiftDate" data-wd="@row.WorkDone"><i class="fas fa-pen-square"></i></button></td>
+  <td><button type="button" class="btn btn-primary myEdit" data-shiftid="@row.ShiftID" data-shelterid="@row.ShelterID" data-volunteerid="@row.VolunteerID" data-sd="@row.ShiftDate" data-wd="@row.WorkDone"><i class="fas fa-pen-square"></i></button></td>
   <td>
     <form method="post" action ="">
       <input type ="hidden" name="shiftid" value="@row.ShiftID">
