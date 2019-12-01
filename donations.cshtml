@@ -2,8 +2,8 @@
 @{
 var db = Database.Open("my-connection"); 
 var selectQueryString = "select * from Donation_Page"; 
-var shelterList= "select d.* from donation d join shelter s on s.ShelterID = d.ShelterID";
-var donorList= "select d.* from donation d join Donor dr on dr.DonorID = d.DonorID";
+var shelterList= "select * from Shelter";
+var donorList = "select * from Donor";
 
 string successMsg = "";
 
@@ -88,6 +88,7 @@ break;
 <h1>
     Donations
 <!-- Button to Open the Modal -->
+
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
   <i class="fas fa-plus-circle"></i>
 </button>
