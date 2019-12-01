@@ -1,7 +1,7 @@
 @{Layout = "_Layout.cshtml";}
 @{
 var db = Database.Open("my-connection"); 
-var selectQueryString = "select * from ServiceType_Page"; 
+var selectQueryString = "select * from EmployeeType_Page"; 
 string successMsg = "";
 if (IsPost){
 switch (Request.Form["SaveType"])
