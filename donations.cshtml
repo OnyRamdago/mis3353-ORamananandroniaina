@@ -76,7 +76,7 @@ break;
  <select class = "form-control" id ="dontypeid" name = "dontypeid">
    @foreach(var dontyperow in db.Query(donationtypeList))
    {
-   <option value = "@dontype.DonationTypeID">@dontyperow.DonationTypeID</option>
+   <option value = "@dontyperow.DonationTypeID">@dontyperow.DonationTypeID</option>
    }
     </select>
   </div>
