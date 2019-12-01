@@ -2,8 +2,8 @@
 @{
 var db = Database.Open("my-connection"); 
 var selectQueryString = "select * from Shift_Page"; 
-var shelterList= "select * from ShelterID";
-var volunteerList = "select * from VolunteerID";
+var shelterList= "select * from Shelter";
+var volunteerList = "select * from Volunteer";
 string successMsg = "";
 if (IsPost){
 switch (Request.Form["SaveType"])
