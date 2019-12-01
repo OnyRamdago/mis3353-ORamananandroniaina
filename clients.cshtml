@@ -12,7 +12,7 @@ db.Execute("insert into Client (ClientID, LastName, FirstName, StreetAddress, Ci
 successMsg = "Client Added.";
 break;
 case "Edit": 
-db.Execute("update Diet set  LastName =@1, FirstName=@2, StreetAddress=@3, City=@4, State=@5, ZipCode=@6, PhoneNumber=@7 where ClientID = @0", Request.Form["lastname"], Request.Form["firstname"], Request.Form["streetaddress"], Request.Form["city"], Request.Form["state"], Request.Form["zipcode"], Request.Form["pnum"]);
+db.Execute("update Client set  LastName =@1, FirstName=@2, StreetAddress=@3, City=@4, State=@5, ZipCode=@6, PhoneNumber=@7 where ClientID = @0", Request.Form["lastname"], Request.Form["firstname"], Request.Form["streetaddress"], Request.Form["city"], Request.Form["state"], Request.Form["zipcode"], Request.Form["pnum"]);
 successMsg =" Client updated.";
 break;
 case "Delete": 
