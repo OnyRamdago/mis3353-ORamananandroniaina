@@ -153,7 +153,7 @@ break;
     $("#modalTitle").text("Edit Animal");
  
   $("#animalid").val(this.getAttribute("data-animalid"));
-       $("#animalid").attr("disabled", "disabled");
+       $("#animalid").attr("type", "hidden");
   $("#shelterid").val(this.getAttribute("data-shelterid"));
   $("#animalname").val(this.getAttribute("data-animalname"));
   $("#animaltype").val(this.getAttribute("data-animaltype"));
@@ -168,7 +168,7 @@ break;
 });
     $("#myClose").click(function(){
     $("#modalTitle").text("Add New Animal");
-    $("#animalid").removeAttr("disabled");});
+    $("#animalid").attr("type", "text);
     
   $("#animalid").val("");
   $("#shelterid").val("");
