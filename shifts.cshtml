@@ -142,7 +142,7 @@ $(document).ready(function(){
     $("#modalTitle").text("Edit Shift");
     
     $("#shiftid").val($(this).attr("data-shiftid"));
-    $("#shiftid").attr("disabled", "disabled");
+    $("#shiftid").attr("type", "hidden");
     $("#shelterid").val($(this).attr("data-shelterid"));
     $("#volunteerid").val($(this).attr("data-foodid"));
     $("#sd").val($(this).attr("data-sd"));
@@ -155,7 +155,7 @@ $(document).ready(function(){
   });
     $("#myClose").click(function(){
     $("#modalTitle").text("Add New Shift");
-      $("#shiftid").removeAttr("disabled");
+      $("#shiftid").attr("type", "text");
     $("#shiftid").val("");
     $("#shelterid").val("");
     $("#volunteerid").val("");
