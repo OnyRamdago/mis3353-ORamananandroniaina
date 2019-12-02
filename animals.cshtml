@@ -2,7 +2,7 @@
 @{
 var db = Database.Open("my-connection"); 
 var selectQueryString = "select * from Animal_Page order by AnimalID"; 
-var shelterList= "select a.*, s.* from animal a join shelter s on s.ShelterID = a.ShelterID";
+var shelterList= "select a.*, s.* from animal a join shelter s on s.shelterid = a.shelterid";
 var genderList = "select a.*,g.* from animal a join animalgender g on a.animalgenderid = g.animalgenderid";
 var typeList = "select a.*,t.* from animal a join animaltype t on a.animaltypeid = t.animaltypeid";
 var statusList = "select a.*,iss.* from animal a join inshelterstatus iss on iss.inshelterstatusid = a.inshelterstatusid";
@@ -149,7 +149,7 @@ break;
   $(document).ready(function(){
   $(".myEdit").click(function(){
   
-    $("#modalTitle").text("Edit Aircraft");
+    $("#modalTitle").text("Edit Animal");
  
   $("#animalid").val(this.getAttribute("data-animalid"));
        $("#animalid").attr("disabled", "disabled");
@@ -166,7 +166,7 @@ break;
   $("#SaveType").val("Edit");
 });
     $("#myClose").click(function(){
-    $("#modalTitle").text("Add New Diet");
+    $("#modalTitle").text("Add New Animal");
     $("#animalid").removeAttr("disabled");});
     
   $("#animalid").val("");
