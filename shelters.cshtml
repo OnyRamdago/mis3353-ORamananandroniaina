@@ -144,7 +144,7 @@ $(document).ready(function(){
     $("#modalTitle").text("Edit Shelter");
     
     $("#shelterid").val($(this).attr("data-shelterid"));
-    $("#shelterid").attr("disabled", "disabled");
+    $("#shelterid").attr("type", "hidden");
     $("#sheltername").val($(this).attr("data-sheltername"));
     $("#shelterphone").val($(this).attr("data-shelterphone"));
     $("#shelteremail").val($(this).attr("data-shelteremail"));
@@ -161,7 +161,7 @@ $(document).ready(function(){
     $("#myClose").click(function(){
     $("#modalTitle").text("Add New Shelter");
       $("#shelterid").removeAttr("disabled");
-//     $("#shelterid").val("");
+    $("#shelterid").val("");
     $("#sheltername").val("");
     $("#shelterphone").val("");
     $("#shelteremail").val("");
