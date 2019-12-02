@@ -140,7 +140,7 @@ break;
 $(document).ready(function(){
   
   $(".myEdit").click(function(){
-    $("#modalTitle").text("Edit Donation");
+    $("#modalTitle").text("Edit Service");
     
     $("#servid").val($(this).attr("data-servid"));
     $("#servid").attr("disabled", "disabled");
@@ -156,7 +156,7 @@ $(document).ready(function(){
     $("#SaveType").val("Edit");
   });
     $("#myClose").click(function(){
-    $("#modalTitle").text("Add New Donation");
+    $("#modalTitle").text("Add New Service");
     
     $("#servid").removeAttr("disabled");
     $("#servid").val("");
