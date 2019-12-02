@@ -14,7 +14,7 @@ db.Execute("insert into Diet (DietID, AnimalID, FoodID, FeedingAmount, TotalCalo
 successMsg =" Diet added.";
 break;
 case "Edit": 
-db.Execute("update Diet set  AnimalID =@1, FoodID=@2, FeedingAmount=@3, TotalCaloriest=@4, DietStart=@5, DietEnd=@6, Description=@7 where DietID = @0", Request.Form["dietid"], Request.Form["animalid"], Request.Form["foodid"], Request.Form["feedqty"], Request.Form["totalcalories"], Request.Form["start"], Request.Form["end"], Request.Form["description"]);
+db.Execute("update Diet set  AnimalID =@1, FoodID=@2, FeedingAmount=@3, TotalCalories=@4, DietStart=@5, DietEnd=@6, Description=@7 where DietID = @0", Request.Form["dietid"], Request.Form["animalid"], Request.Form["foodid"], Request.Form["feedqty"], Request.Form["totalcalories"], Request.Form["start"], Request.Form["end"], Request.Form["description"]);
 successMsg =" Diet updated.";
 break;
 case "Delete": 
