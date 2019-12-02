@@ -1,7 +1,7 @@
 @{Layout = "_Layout.cshtml";}
 @{
 var db = Database.Open("my-connection"); 
-var selectQueryString = "select * from Shelter_Page"; 
+var selectQueryString = "select * from Shelter"; 
 string successMsg = "";
 if (IsPost){
 switch (Request.Form["SaveType"])
