@@ -105,7 +105,7 @@ $(document).ready(function(){
     $("#modalTitle").text("Edit Employee");
     
     $("#employeetypeid").val($(this).attr("data-employeetypeid"));
-    $("#employeetypeid").attr("disabled", "disabled");
+    $("#employeetypeid").attr("type", "hidden");
     $("#etn").val($(this).attr("data-etn"));
  
      $("#myModal").modal({
@@ -115,7 +115,7 @@ $(document).ready(function(){
   });
     $("#myClose").click(function(){
     $("#modalTitle").text("Add New Employee Type");
-      $("#employeetypeid").removeAttr("disabled");
+      $("#employeetypeid").attr("type", "text");
     $("#employeetypeid").val("");
     $("#etn").val("");
  
