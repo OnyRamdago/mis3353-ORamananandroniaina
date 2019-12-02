@@ -34,65 +34,30 @@ break;
   <strong>Success!</strong> @successMsg
 </div>
 }
-<!-- The Modal -->
-<div class="modal" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title" id = "modalTitle">Add New Service</h4>
-        <button type="button" class="close" data-dismiss="modal" id = "myClose">&times;</button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-         <form method="post" action="">
-  <div class="form-group">
-    <label for="servid">Service ID:</label>
-    <input type="text" class="form-control" id="servid" name = "servid">
-  </div>
-  <div class="form-group">
-    <label for="animalList">Animal ID:</label>
- <select class = "form-control" id ="animid" name = "animid">
-   @foreach(var animalrow in db.Query(animalList))
-   {
-   <option value = "@animalrow.AnimalID">@animalrow.AnimalClassification</option>
-   }
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="serviceList">Service Type ID:</label>
- <select class = "form-control" id ="servtypeid" name = "servtypeid">
-   @foreach(var servicerow in db.Query(serviceList))
-   {
-   <option value = "@servicerow.ServiceTypeID">@servicerow.ServiceName</option>
-   }
-    </select>
-  </div>
-   
-   <div class="form-group">
-    <label for="clientList">Client ID:</label>
- <select class = "form-control" id ="clientid" name = "clientid">
-   @foreach(var clientrow in db.Query(clientList))
-   {
-   <option value = "@clientrow.ClientID">@clientrow.ClientID</option>
-   }
-    </select>
-  </div>
-  <div class="form-group">
-    <label for="sdate">Service Date:</label>
-    <input type="date" class="form-control" id="sdate" name = "sdate">
-  </div>
-  <div class="form-group">  
-    <input type="hidden" name="SaveType" id="SaveType" value="Add">
-<button type="submit" class="btn btn-primary">Save</button>
-</form> 
+<div class="modal" id="myModal>
+  <div>
+    <div>
+      <div>
+        <h4>Add New Service</h4>
+        <button type="button" data-dismiss="modal">&times;</button></div>
+        <div><form action="" method="post">
+        <div><label for="servid">Service ID:</label> <input name="servid" type="text" /></div>
+        <div><label for="animalList">Animal ID:</label><select name="animid">@foreach(var animalrow in db.Query(animalList)) {
+        <option value="@animalrow.AnimalID">@animalrow.AnimalClassification</option>
+        }</select></div>
+        <div><label for="serviceList">Service Type ID:</label><select name="servtypeid">@foreach(var servicerow in db.Query(serviceList)) {
+        <option value="@servicerow.ServiceTypeID">@servicerow.ServiceName</option>
+        }</select></div>
+        <div><label for="clientList">Client ID:</label><select name="clientid">@foreach(var clientrow in db.Query(clientList)) {
+        <option value="@clientrow.ClientID">@clientrow.ClientID</option>
+        }</select></div>
+        <div><label for="sdate">Service Date:</label> <input name="sdate" type="date" /></div>
+        <div><input name="SaveType" type="hidden" value="Add" /> <button type="submit">Save</button></div>
+        </form>
       </div>
     </div>
   </div>
 </div>
-
 <h1>
     Donations
 <!-- Button to Open the Modal -->
