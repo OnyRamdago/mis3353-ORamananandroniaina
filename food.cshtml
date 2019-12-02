@@ -115,7 +115,7 @@ $(document).ready(function(){
     $("#modalTitle").text("Edit Diet");
     
     $("#foodid").val($(this).attr("data-foodid"));
-    $("#foodid").attr("disabled", "disabled");
+    $("#foodid").attr("type", "hidden");
     $("#fname").val($(this).attr("data-fname"));
     $("#stock").val($(this).attr("data-stock"));
     $("#cal").val($(this).attr("data-cal"));
@@ -127,7 +127,7 @@ $(document).ready(function(){
   });
     $("#myClose").click(function(){
     $("#modalTitle").text("Add New Food");
-      $("#foodid").removeAttr("disabled");
+      $("#foodid").attr("type", "text");
     $("#foodid").val("");
     $("#fname").val("");
     $("#stock").val("");
