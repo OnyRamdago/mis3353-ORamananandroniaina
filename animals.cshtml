@@ -2,10 +2,10 @@
 @{
 var db = Database.Open("my-connection"); 
 var selectQueryString = "select * from Animal_Page order by AnimalID"; 
-var shelterList= "select a.*, s.* from animal a join shelter s on s.shelterid = a.shelterid";
-var genderList = "select a.*,g.* from animal a join animalgender g on a.animalgenderid = g.animalgenderid";
-var typeList = "select a.*,t.* from animal a join animaltype t on a.animaltypeid = t.animaltypeid";
-var statusList = "select a.*,iss.* from animal a join inshelterstatus iss on iss.inshelterstatusid = a.inshelterstatusid";
+var shelterList= "select ShelterID, ShelterName from shelter";
+var genderList = "select AnimalGenderID, GenderType from animalgender";
+var typeList = "select * animaltype";
+var statusList = "select * from inshelterstatus";
 
 string successMsg = "";
 if (IsPost){
@@ -52,7 +52,7 @@ break;
     <input type="text" class="form-control" id="animalid" name = "animalid">
   </div>
   <div class="form-group">
-    <label for="shelterid">Shelter ID:</label>
+    <label for="shelterList">Shelter ID:</label>
  <select class = "form-control" id ="shelterid" name = "shelterid">
    @foreach(var shelterrow in db.Query(shelterList))
    {
@@ -65,19 +65,19 @@ break;
     <input type="text" class="form-control" id="animalname" name = "animalname">
   </div>
    <div class="form-group">
-    <label for="animaltype">Animal Type ID:</label>
+    <label for="typeList">Animal Type ID:</label>
 <select class = "form-control" id ="animaltype" name = "animaltype">
    @foreach(var typerow in db.Query(typeList))
    {
-   <option value = "@typerow.AnimalTypeID">@typerow.AnimalTypeID</option>
+   <option value = "@typerow.AnimalTypeID">@typerow.AnimalTypeID - @typerow.AnimalClassification</option>
    }
     </select>  </div>
   <div class="form-group">
-    <label for="gender">Gender ID:</label>
+    <label for="genderList">Gender ID:</label>
 <select class = "form-control" id ="gender" name = "gender">
    @foreach(var genderrow in db.Query(genderList))
    {
-   <option value = "@genderrow.AnimalGenderID">@genderrow.AnimalGenderID - @genderrow.GenderType</option>
+   <option value = "@genderrow.AnimalGenderID">@genderrow.GenderType</option>
    }
     </select>  
    </div>
