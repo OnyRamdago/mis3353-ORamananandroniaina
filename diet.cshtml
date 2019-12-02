@@ -145,7 +145,7 @@ $(document).ready(function(){
     $("#modalTitle").text("Edit Diet");
     
     $("#dietid").val($(this).attr("data-dietid"));
-    $("#dietid").attr("disabled", "disabled");
+    $("#dietid").attr("type", "hidden");
     $("#animalid").val($(this).attr("data-animalid"));
     $("#foodid").val($(this).attr("data-foodid"));
     $("#feedqty").val($(this).attr("data-feedqty"));
@@ -160,7 +160,7 @@ $(document).ready(function(){
   });
     $("#myClose").click(function(){
     $("#modalTitle").text("Add New Diet");
-      $("#dietid").removeAttr("disabled");
+     $("#dietid").attr("type", "text");
     $("#dietid").val("");
     $("#animalid").val("");
     $("#foodid").val("");
