@@ -112,7 +112,7 @@ $(document).ready(function(){
     $("#modalTitle").text("Edit Volunteer");
     
     $("#volunteerid").val($(this).attr("data-volunteerid"));
-    $("#volunteerid").attr("disabled", "disabled");
+    $("#volunteerid").attr("type", "hidden");
     $("#firstname").val($(this).attr("data-firstname"));
     $("#lastname").val($(this).attr("data-lastname"));
     $("#certificate").val($(this).attr("data-certificate"));
@@ -124,7 +124,7 @@ $(document).ready(function(){
   });
     $("#myClose").click(function(){
     $("#modalTitle").text("Add New Client");
-    $("#volunteerid").removeAttr("disabled");
+    $("#volunteerid").attr("type", "text");
   
     $("#volunteerid").val("");
     $("#firstname").val("");
