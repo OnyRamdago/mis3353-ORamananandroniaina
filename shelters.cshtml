@@ -145,7 +145,7 @@ $(document).ready(function(){
     
     $("#shelterid").val($(this).attr("data-shelterid"));
     $("#shelterid").attr("type", "hidden");
-    $("label[for='shelterid']").attr("type", "hidden");
+    $("label[for='shelterid']").attr("hidden", true);
     $("#sheltername").val($(this).attr("data-sheltername"));
     $("#shelterphone").val($(this).attr("data-shelterphone"));
     $("#shelteremail").val($(this).attr("data-shelteremail"));
