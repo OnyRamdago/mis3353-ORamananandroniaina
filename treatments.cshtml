@@ -117,7 +117,7 @@ $(document).ready(function(){
     $("#modalTitle").text("Edit Treatment");
     
     $("#treatid").val($(this).attr("data-treatid"));
-    $("#treatid").attr("disabled", "disabled");
+    $("#treatid").attr("type", "hidden");
     $("#employeeid").val($(this).attr("data-employeeid"));
     $("#treattype").val($(this).attr("data-treattype"));
     $("#treatdesc").val($(this).attr("data-treatdesc"));
@@ -129,7 +129,7 @@ $(document).ready(function(){
   });
     $("#myClose").click(function(){
     $("#modalTitle").text("Add New Treatment");
-      $("#treatid").removeAttr("disabled");
+      $("#treatid").attr("type", "text");
     $("#treatid").val("");
     $("#employeeid").val("");
     $("#treattype").val("");
