@@ -4,7 +4,7 @@ var db = Database.Open("my-connection");
 var selectQueryString = "select * from Animal_Page order by AnimalID"; 
 var shelterList= "select ShelterID, ShelterName from shelter";
 var genderList = "select AnimalGenderID, GenderType from animalgender";
-var typeList = "select * AnimalType";
+var typeList = "select AnimalClassification, AnimalTypeID, Breed from AnimalType";
 var statusList = "select * from inshelterstatus";
 
 string successMsg = "";
