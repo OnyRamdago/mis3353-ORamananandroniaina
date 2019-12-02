@@ -13,11 +13,11 @@ switch (Request.Form["SaveType"])
 {
 
 case "Add": 
- db.Execute("insert into Animal (AnimalID, ShelterID, AnimalName, AnimalTypeID, AnimalGenderID, DateOfBirth,InShelterStatusID) values (@0, @1, @2, @3, @4, @5, @6)", Request.Form["animalid"], Request.Form["shelterid"], Request.Form["animalname"], Request.Form["animaltype"], Request.Form["gender"], Request.Form["dob"], Request.Form["status"]);
+ db.Execute("insert into Animal (AnimalID, ShelterID, AnimalName, AnimalTypeID, AnimalGenderID, DateOfBirth,InShelterStatusID) values (@0, @1, @2, @3, @4, @5, @6)", Request.Form["animalid"], Request.Form["shelterid"], Request.Form["animalname"], Request.Form["animtype"], Request.Form["gender"], Request.Form["dob"], Request.Form["status"]);
 successMsg =" Animal added.";
 break;
 case "Edit": 
-db.Execute("update Animal set  ShelterID=@1, AnimalName=@2, AnimalTypeID=@3, AnimalGenderID=@4, DateOfBirth=@5, InShelterStatus=@6 where AnimalID = @0", Request.Form["shelterid"], Request.Form["animalname"], Request.Form["animaltype"], Request.Form["gender"], Request.Form["dob"], Request.Form["status"]);
+db.Execute("update Animal set  ShelterID=@1, AnimalName=@2, AnimalTypeID=@3, AnimalGenderID=@4, DateOfBirth=@5, InShelterStatus=@6 where AnimalID = @0", Request.Form["shelterid"], Request.Form["animalname"], Request.Form["animtype"], Request.Form["gender"], Request.Form["dob"], Request.Form["status"]);
 successMsg =" Animal updated.";
 break;
 case "Delete": 
@@ -66,10 +66,10 @@ break;
   </div>
    <div class="form-group">
     <label for="typeList">Animal Type ID:</label>
-<select class = "form-control" id ="animaltype" name = "animaltype">
+<select class = "form-control" id ="animtype" name = "animtype">
    @foreach(var typerow in db.Query(typeList))
    {
-   <option value = "@typerow.AnimalTypeID">@typerow.AnimalTypeID - @typerow.AnimalClassification</option>
+   <option value = "@typerow.AnimalTypeID">@typerow.AnimalClassification</option>
    }
     </select>  </div>
   <div class="form-group">
@@ -134,7 +134,7 @@ break;
 <td>@row.AnimalGenderID</td> 
 <td>@row.DateOfBirth.ToString("MM/dd/yyyy")</td>
 <td>@row.InShelterStatusID</td> 
-  <td><button type="button" class="btn btn-primary myEdit" data-animalid = "@row.AnimalID" data-shelterid = "@row.ShelterID" data-animalname = "@row.AnimalName" data-animalType = "@row.AnimalTypeID" data-gender = "@row.AnimalGenderID" data-dob = "@row.DateOfBirth"  data-status = "@row.InShelterStatusID"><i class="fas fa-pen-square"></i></button></td>
+  <td><button type="button" class="btn btn-primary myEdit" data-animalid = "@row.AnimalID" data-shelterid = "@row.ShelterID" data-animalname = "@row.AnimalName" data-animType = "@row.AnimalTypeID" data-gender = "@row.AnimalGenderID" data-dob = "@row.DateOfBirth"  data-status = "@row.InShelterStatusID"><i class="fas fa-pen-square"></i></button></td>
 <td>
     <form method="post" action ="">
       <input type ="hidden" name="animalid" value="@row.AnimalID">
@@ -156,7 +156,7 @@ break;
        $("#animalid").attr("type", "hidden");
   $("#shelterid").val(this.getAttribute("data-shelterid"));
   $("#animalname").val(this.getAttribute("data-animalname"));
-  $("#animaltype").val(this.getAttribute("data-animaltype"));
+  $("#animtype").val(this.getAttribute("data-animtype"));
   $("#gender").val(this.getAttribute("data-gender"));
   $("#dob").val(this.getAttribute("data-dob"));
   $("#status").val(this.getAttribute("data-status"));
@@ -173,7 +173,7 @@ break;
   $("#animalid").val("");
   $("#shelterid").val("");
   $("#animalname").val("");
-  $("#animaltype").val("");
+  $("#animtype").val("");
   $("#gender").val("");
   $("#dob").val("");
   $("#status").val("");
