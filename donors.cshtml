@@ -131,7 +131,7 @@ $(document).ready(function(){
     $("#modalTitle").text("Edit Donor");
     
     $("#donorid").val($(this).attr("data-donorid"));
-    $("#donorid").attr("disabled", "disabled");
+    $("#donorid").attr("type", "hidden");
     $("#lastname").val($(this).attr("data-lastname"));
     $("#firstname").val($(this).attr("data-firstname"));
     $("#streetaddress").val($(this).attr("data-streetaddress"));
@@ -146,7 +146,7 @@ $(document).ready(function(){
   });
     $("#myClose").click(function(){
     $("#modalTitle").text("Add New Donor");
-      $("#donorid").removeAttr("disabled");
+      $("#donorid").attr("type", "text");
     $("#donorid").val("");
     $("#lastname").val("");
     $("#firstname").val("");
