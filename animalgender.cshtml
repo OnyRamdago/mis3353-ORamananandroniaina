@@ -109,7 +109,7 @@ $(document).ready(function(){
     $("#modalTitle").text("Edit AnimalGender");
     
     $("#animalgenderid").val($(this).attr("data-animalgenderid"));
-    $("#animalgenderid").attr("disabled", "disabled");
+    $("#animalgenderid").attr("type", "hidden");
     $("#gt").val($(this).attr("data-gt"));
     $("#cn").val($(this).attr("data-cn"));
   
@@ -120,7 +120,7 @@ $(document).ready(function(){
   });
     $("#myClose").click(function(){
     $("#modalTitle").text("Add New Gender Type");
-      $("#animalgenderid").removeAttr("disabled");
+      $("#animalgenderid").attr("type","text");
     $("#animalgenderid").val("");
     $("#gt").val("");
     $("#cn").val("");
