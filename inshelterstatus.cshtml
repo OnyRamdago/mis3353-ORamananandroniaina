@@ -115,7 +115,7 @@ $(document).ready(function(){
     $("#modalTitle").text("Edit In Shelter Status");
     
     $("#inshelterstatusid").val($(this).attr("data-inshelterstatusid"));
-    $("#inshelterstatusid").attr("disabled", "disabled");
+    $("#inshelterstatusid").attr("type", "hidden");
     $("#st").val($(this).attr("data-st"));
     $("#da").val($(this).attr("data-da"));
     $("#dd").val($(this).attr("data-dd"));
@@ -127,7 +127,7 @@ $(document).ready(function(){
   });
     $("#myClose").click(function(){
     $("#modalTitle").text("Add New In Shelter Status");
-      $("#inshelterstatusid").removeAttr("disabled");
+      $("#inshelterstatusid").attr("type", "text");
     $("#inshelterstatusid").val("");
     $("#st").val("");
     $("#da").val("");
