@@ -109,7 +109,7 @@ $(document).ready(function(){
     $("#modalTitle").text("Edit Donation Type");
     
     $("#donationtypeid").val($(this).attr("data-donationtypeid"));
-    $("#donationtypeid").attr("disabled", "disabled");
+    $("#donationtypeid").attr("type", "hidden");
     $("#dtn").val($(this).attr("data-dtn"));
     $("#damt").val($(this).attr("data-damt"));
   
@@ -120,7 +120,7 @@ $(document).ready(function(){
   });
     $("#myClose").click(function(){
     $("#modalTitle").text("Add New Donation Type");
-      $("#donationtypeid").removeAttr("disabled");
+      $("#donationtypeid").attr("type", "text");
     $("#donationtypeid").val("");
     $("#dtn").val("");
     $("#damt").val("");
