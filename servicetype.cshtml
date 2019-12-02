@@ -105,7 +105,7 @@ $(document).ready(function(){
     $("#modalTitle").text("Edit ServiceType");
     
     $("#servicetypeid").val($(this).attr("data-servicetypeid"));
-    $("#servicetypeid").attr("disabled", "disabled");
+    $("#servicetypeid").attr("type", "hidden");
     $("#stn").val($(this).attr("data-stn"));
  
      $("#myModal").modal({
@@ -115,7 +115,7 @@ $(document).ready(function(){
   });
     $("#myClose").click(function(){
     $("#modalTitle").text("Add New Service Type");
-      $("#servicetypeid").removeAttr("disabled");
+      $("#servicetypeid").attr("type", "text");
     $("#servicetypeid").val("");
     $("#stn").val("");
  
