@@ -13,7 +13,7 @@ successMsg =" Shelter added.";
 break;
 
 case "Edit": 
-db.Execute("update Shelter set ShelterID=@0, ShelterName =@1, ShelterPhone=@2, ShelterEmail=@3, StreetAddress=@4, Cityt=@5, State=@6, ZipCode=@7, ShelterCapacity=@8 where ShelterID=@0", Request.Form["shelterid"], Request.Form["sheltername"], Request.Form["shelterphone"], Request.Form["shelteremail"],  Request.Form["streetaddress"], Request.Form["city"],  Request.Form["state"], Request.Form["zipcode"],  Request.Form["sheltercapacity"]);
+db.Execute("update Shelter set ShelterID=@0, ShelterName =@1, ShelterPhone=@2, ShelterEmail=@3, StreetAddress=@4, City=@5, State=@6, ZipCode=@7, ShelterCapacity=@8 where ShelterID=@0", Request.Form["shelterid"], Request.Form["sheltername"], Request.Form["shelterphone"], Request.Form["shelteremail"],  Request.Form["streetaddress"], Request.Form["city"],  Request.Form["state"], Request.Form["zipcode"],  Request.Form["sheltercapacity"]);
 successMsg =" Shelter updated.";
 break;
 
@@ -144,7 +144,7 @@ $(document).ready(function(){
     $("#modalTitle").text("Edit Shelter");
     
     $("#shelterid").val($(this).attr("data-shelterid"));
-    $("#shelterid").attr("disabled", "disabled");
+//     $("#shelterid").attr("disabled", "disabled");
     $("#sheltername").val($(this).attr("data-sheltername"));
     $("#shelterphone").val($(this).attr("data-shelterphone"));
     $("#shelteremail").val($(this).attr("data-shelteremail"));
