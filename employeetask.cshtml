@@ -135,7 +135,7 @@ $(document).ready(function(){
     $("#modalTitle").text("Edit EmployeeTask");
     
     $("#employeetaskid").val($(this).attr("data-employeetaskid"));
-    $("#employeetaskid").attr("disabled", "disabled");
+    $("#employeetaskid").attr("type", "hidden");
     $("#serviceid").val($(this).attr("data-serviceid"));
     $("#employeeid").val($(this).attr("data-employeeid"));
     $("#da").val($(this).attr("data-da"));
@@ -149,7 +149,7 @@ $(document).ready(function(){
   });
     $("#myClose").click(function(){
     $("#modalTitle").text("Add New EmployeeTask");
-      $("#employeetaskid").removeAttr("disabled");
+      $("#employeetaskid").attr("type", "text");
     $("#employeetaskid").val("");
     $("#serviceid").val("");
     $("#employeeid").val("");
