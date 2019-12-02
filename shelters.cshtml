@@ -18,7 +18,7 @@ successMsg =" Shelter updated.";
 break;
 
 case "Delete": 
-db.Execute("delete from Diet where ShelterID=@0", Request.Form["shelterid"]);
+db.Execute("delete from Shelter where ShelterID=@0", Request.Form["shelterid"]);
 successMsg =" Shelter deleted.";
 break;
 }
