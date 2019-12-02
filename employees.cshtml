@@ -182,7 +182,7 @@ $(document).ready(function(){
     $("#modalTitle").text("Edit Employee");
     
     $("#empid").val($(this).attr("data-empid"));
-    $("#empid").attr("disabled", "disabled");
+    $("#empid").attr("type", "hidden");
     $("#shelterid").val($(this).attr("data-shelterid"));
     $("#emptypeid").val($(this).attr("data-emptypeid"));
     $("#firstname").val($(this).attr("data-firstname"));
@@ -202,7 +202,7 @@ $(document).ready(function(){
   });
     $("#myClose").click(function(){
     $("#modalTitle").text("Add New Donor");
-      $("#empid").removeAttr("disabled");
+      $("#empid").attr("type", "text");
     $("#empid").val("");
     $("#shelterid").val("");
     $("#emptypeid").val("");
