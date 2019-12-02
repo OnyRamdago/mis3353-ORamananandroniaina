@@ -13,7 +13,7 @@ successMsg =" Shelter added.";
 break;
 
 case "Edit": 
-db.Execute("update Shelter set  ShelterName =@1, ShelterPhone=@2, ShelterEmail=@3, StreetAddress=@4, Cityt=@5, State=@6, ZipCode=@7 ShelterCapacity= @8 where ShelterID=@0", Request.Form["shelterid"], Request.Form["sheltername"], Request.Form["shelterphone"], Request.Form["shelteremail"],  Request.Form["streetaddress"], Request.Form["city"],  Request.Form["state"], Request.Form["zipcode"],  Request.Form["sheltercapacity"]);
+db.Execute("update Shelter set  ShelterName =@1, ShelterPhone=@2, ShelterEmail=@3, StreetAddress=@4, Cityt=@5, State=@6, ZipCode=@7 ShelterCapacity=@8 where ShelterID=@0", Request.Form["shelterid"], Request.Form["sheltername"], Request.Form["shelterphone"], Request.Form["shelteremail"],  Request.Form["streetaddress"], Request.Form["city"],  Request.Form["state"], Request.Form["zipcode"],  Request.Form["sheltercapacity"]);
 successMsg =" Shelter updated.";
 break;
 
