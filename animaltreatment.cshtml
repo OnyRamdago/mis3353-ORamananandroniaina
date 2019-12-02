@@ -136,7 +136,7 @@ $(document).ready(function(){
     $("#modalTitle").text("Edit Animal Treatment");
     
     $("#animaltreatmentid").val($(this).attr("data-animaltreatmentid"));
-    $("#dietid").attr("disabled", "disabled");
+    $("#dietid").attr("type", "hidden");
     $("#animal").val($(this).attr("data-animalid"));
     $("#treatmentid").val($(this).attr("data-treatmentid"));
     $("#startdate").val($(this).attr("data-startdate"));
@@ -150,7 +150,7 @@ $(document).ready(function(){
   });
     $("#myClose").click(function(){
     $("#modalTitle").text("Add New Diet");
-      $("#animaltreatmentid").removeAttr("disabled");
+      $("#animaltreatmentid").attr("type", "text");
     $("#animaltreatmentid").val("");
     $("#animalid").val("");
     $("#treatmentid").val("");
