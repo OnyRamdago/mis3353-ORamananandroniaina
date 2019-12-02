@@ -109,7 +109,7 @@ $(document).ready(function(){
     $("#modalTitle").text("Edit AnimalType");
     
     $("#animaltypeid").val($(this).attr("data-animaltypeid"));
-    $("#animaltypeid").attr("disabled", "disabled");
+    $("#animaltypeid").attr("type", "hidden");
     $("#cls").val($(this).attr("data-cls"));
     $("#brd").val($(this).attr("data-brd"));
   
@@ -120,7 +120,7 @@ $(document).ready(function(){
   });
     $("#myClose").click(function(){
     $("#modalTitle").text("Add New Animal Type");
-      $("#animaltypeid").removeAttr("disabled");
+      $("#animaltypeid").attr("type", "text");
     $("#animaltypeid").val("");
     $("#cls").val("");
     $("#brd").val("");
