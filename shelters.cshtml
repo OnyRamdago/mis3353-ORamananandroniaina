@@ -8,7 +8,7 @@ switch (Request.Form["SaveType"])
 {
 
 case "Add": 
-db.Execute("insert into Shelter (ShelterID, ShelterName, ShelterPhone, ShelterEmail, StreetAddress, City, State, ZipCode, ShelterCapacity) values (@0, @1, @2, @3, @4, @5, @6, @7, @8)", Request.Form["shelterid"], Request.Form["sheltername"], Request.Form["shelterphone"], Request.Form["shelteremail"],  Request.Form["streetaddress"], Request.Form["city"],  Request.Form["state"], Request.Form["zipcode"],  Request.Form["sheltercapacity"]);
+db.Execute("insert into Shelter_Page (ShelterID, ShelterName, ShelterPhone, ShelterEmail, StreetAddress, City, State, ZipCode, ShelterCapacity) values (@0, @1, @2, @3, @4, @5, @6, @7, @8)", Request.Form["shelterid"], Request.Form["sheltername"], Request.Form["shelterphone"], Request.Form["shelteremail"],  Request.Form["streetaddress"], Request.Form["city"],  Request.Form["state"], Request.Form["zipcode"],  Request.Form["sheltercapacity"]);
 successMsg =" Shelter added.";
 break;
 
